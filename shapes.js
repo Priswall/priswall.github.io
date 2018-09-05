@@ -5,10 +5,10 @@ var shapeID = {
     giant: 3
 };
 
-function shape(x, y, id) {
+function shape() {
 
-    this.x = x;
-    this.y = y;
+    this.x = (Math.round(Math.random() * 3000) - 1500);
+    this.y = (Math.round(Math.random() * 3000) - 1500);
     if(this.x < 500 && this.x > -500 && this.y < 500 && this.y > -500) {
 
         this.id = shapeID.pentagon;
@@ -16,7 +16,6 @@ function shape(x, y, id) {
         if(Math.random() < 0.3) {
 
             this.id = shapeID.giant;
-            console.log(x + ", " + y + ", " + this.id);
 
         }
 
@@ -27,7 +26,8 @@ function shape(x, y, id) {
     this.cooldown = 500;
     this.timetill = 0;
     this.dead = false;
-    this.id = id;
+    this.rand = Math.random();
+    this.id = 0;
     this.dh = 0;
     this.r = (Math.random() / 30) - 0.015;
     this.velx = (Math.random() / 2) - 0.25;
@@ -117,15 +117,19 @@ function shape(x, y, id) {
 
         if(this.x < -1615) {
             this.x = -1615;
+            this.velx *= -1;
         }
         if(this.y < -1700) {
             this.y = -1700;
+            this.vely *= -1;
         }
         if(this.x > 1700) {
             this.x = 1700;
+            this.velx *= -1;
         }
         if(this.y > 1700) {
             this.y = 1700;
+            this.vely *= -1;
         }
 
         if(this.cooldown < 500) {

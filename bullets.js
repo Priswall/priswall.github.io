@@ -1,4 +1,4 @@
-function bullet(x, y, dx, dy, r, id, t, s, d, p, k) {
+function bullet(x, y, dx, dy, r, id, t, s, d, p, k, user) {
 
     this.x = x;
     this.y = y;
@@ -16,6 +16,7 @@ function bullet(x, y, dx, dy, r, id, t, s, d, p, k) {
     this.d = d;
     this.p = p;
     this.knockback = k;
+    this.user = user;
 
     this.update = function() {
 
@@ -24,7 +25,7 @@ function bullet(x, y, dx, dy, r, id, t, s, d, p, k) {
         if(this.p <= 0) {
             this.dead = true;
         }
-        
+
         if(this.id !== 1) {
 
             this.x -= (this.dx / this.mag) * this.ms;
@@ -144,9 +145,7 @@ function bullet(x, y, dx, dy, r, id, t, s, d, p, k) {
                 c.strokeStyle = "rgb(200, 100, 200," + this.a + ")";
                 break;
             }
-            c.arc(0, 0, this.r + this.s, 0, 2 * Math.PI);
-            c.fill();
-            c.stroke();
+            circle(0, 0, this.r + this.s);
 
             c.restore();
             break;

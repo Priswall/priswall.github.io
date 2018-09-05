@@ -5,12 +5,12 @@
     <meta name="description" content="An open-source diep.io clone made with HTML, JS, and CSS">
     <meta name="keywords" content="HTML,CSS,diepio,clone,diep.io,JS,opensource,open-source,JavaScript">
     <meta name="author" content="Priswall">
-    <link rel="icon" href="https://raw.githubusercontent.com/Priswall/diepio-clone/master/icon.png"></link>
+    <link rel="icon" href="icon.png"></link>
     <title>peip.io</title>
   </head>
   <body>
     <style>
-       @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+       @import url('ubuntu.css');
        html,
   	   body,
        canvas,
@@ -22,8 +22,9 @@
       }
     </style>
     <canvas id="canvas" width="800px" height="600px"></canvas>
-    <form id="form" autocomplete="off" onsubmit="playGame(); return false;"></form>
+    <form id="form" autocomplete="off" onsubmit="return false;"></form>
     <script src="index.js"></script>
+    <script src="upgrades.js"></script>
     <script src="shapes.js"></script>
     <script src="bullets.js"></script>
     <script src="tanks.js"></script>

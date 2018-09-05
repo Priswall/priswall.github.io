@@ -3,8 +3,10 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var c = canvas.getContext("2d");
 var bgimg = new Image();
-bgimg.onload = function() {};
-bgimg.src = "https://raw.githubusercontent.com/Priswall/diepio-clone/master/background.png";
+bgimg.onload = function() {
+    requestAnimationFrame(draw);
+};
+bgimg.src = "background.png";
 var input = document.createElement("input");
 input.style.opacity = 0;
 input.autofocus = true;
@@ -18,10 +20,15 @@ input.size= canvas.width / 30;
 input.maxLength="13";
 
 var start = 0;
+var killedScreen = null;
+var transitioningToGame = false;
+var transitioningToMenu = false;
 var frame = 0;
 var gamemodes = ["FFA", "Teams"];
 var gamemode = 0;
-var op = 0;
+var op = 10;
+var menuFriction = -0.015;
+var menuVel = 1;
 var s = "Menu";
 var mouseIsPressed = false;
 var canClick = true;
@@ -40,475 +47,71 @@ var mousey = 0;
 var mmousex = 0;
 var mmousey = 0;
 var millis = 0;
+var playerStats = null;
 
 document.getElementById("form").appendChild(input);
 
 function disappearInput() {
-    if(op > 0) {
-        op -= 30;
-        c.save();
-        var opp = (op + (Math.PI / 2)) / 1000;
-        if(opp < 0) {
-            opp = 0;
-        }
-        c.globalAlpha = opp;
-        c.drawImage(bgimg, (canvas.width / 2) - (bgimg.width / 2), (canvas.height / 2) - (bgimg.height / 2));
-        c.restore();
-        input.style.opacity = (op + (Math.PI / 2)) / 1000;
-        input.style.border = "5px solid black";
-        input.style.left = ((canvas.width / 2) - (input.size * 5)) + "px";
-        input.style.top = ((canvas.height / 3) + (50 * Math.sin((op / 13) / 50))) + "px";
-        requestAnimationFrame(disappearInput);
-    } else {
 
-        document.getElementById("form").removeChild(input);
-        tanks.splice(1, 1);
+    menuVel += menuFriction * 0.75;
+    op -= menuVel * 0.75;
 
+    c.save();
+    c.globalAlpha = 1 - (op / 10);
+    c.drawImage(bgimg, (canvas.width / 2) - (bgimg.width / 2), (canvas.height / 2) - (bgimg.height / 2));
+    c.restore();
+
+    input.style.opacity = 1 - (op / 10);
+    input.style.border = "5px solid black";
+    input.style.left = ((canvas.width / 2) - (input.size * 5)) + "px";
+    input.style.top = ((canvas.height / 3) - (50 * (op / 13))) + "px";
+    input.blur();
+
+    if(op > 9) {
+        input.style.opacity = 0;
+        transitioningToGame = false;
     }
 }
 
-requestAnimationFrame(draw);
+function bringBackMenu() {
+        menuVel += menuFriction * 0.75;
+        op -= menuVel * 0.75;
 
-function returnMenu() {
-
-    if(op < 1000 && op > 0) {
-        input.focus();
-        if(document.getElementById("input") === null) {
-            document.getElementById("form").appendChild(input);
-        }
-        op ++;
         c.save();
-        var opp = (op + (Math.PI / 2)) / 1000;
-        if(opp > 1000) {
-            opp = 1000;
-        }
-        c.globalAlpha = opp;
+        c.globalAlpha = 1 - (op / 10);
         c.drawImage(bgimg, (canvas.width / 2) - (bgimg.width / 2), (canvas.height / 2) - (bgimg.height / 2));
         c.restore();
-        input.style.opacity = op / 1000;
+
+        input.style.opacity = 1 - (op / 10);
         input.style.border = "5px solid black";
         input.style.left = ((canvas.width / 2) - (input.size * 5)) + "px";
-        input.style.top = ((canvas.height / 3) + (50 * Math.sin((op / 13) / 50))) + "px";
-        requestAnimationFrame(returnMenu);
+        input.style.top = ((canvas.height / 3) - (50 * (op / 13))) + "px";
+        input.focus();
+}
 
-    } else if (op === 1000){
-        s = "Menu";
-        tanks = [];
-        shapes = [];
-        bullets = [];
-    } else if(op < 0) {
-
-        op = 100;
-
-    }
+function returnMenu() {
+    s = "Death Screen";
 }
 
 function playGame() {
 
     s = "FFA";
-
-    disappearInput();
-    var name = input.value;
-    if(name === "") {
-        name = "Unnamed Tank";
+    menuVel = -0.5;
+    transitioningToGame = true;
+    if(input.value === "") {
+        tanks.push(new tank((Math.random() * 3400), (Math.random() * 3400), 0, 0, "Unnamed Tank", 0, 0, 0, 0));
+    } else {
+            tanks.push(new tank((Math.random() * 3400), (Math.random() * 3400), 0, 0, input.value, 0, 0, 0, 0));
     }
-
-    if(shapes.length === 0) {
-        for(var i = 0; i < 100; i++) {
-
-            shapes.push(new shape(Math.round(Math.random() * 3000) - 1500, Math.round(Math.random() * 3000) - 1500, Math.round(Math.random() * 2)));
-
-        }
-    }
-
-    tanks.unshift(new tank((Math.random() * 3000) - 1500, (Math.random() * 3000) - 1500, 0, 0, name, 0, 0, 0, Math.round(Math.random() * 1000)));
 
 }
 
-
-function upgradeScreen() {
-
-    canvas.style.cursor = "default";
-
-    if(tanks[0].lvl >= 15 && tanks[0].id === 0) {
-
-        for(var i = 0; i < tankorder[tanks[0].id].length; i++) {
-
-            switch(i) {
-
-                case 0:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(255, 100, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(255, 50, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 1:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(100, 100, 255)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(50, 50, 255)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 2:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(220, 220, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(235, 235, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 3:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(100, 255, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(50, 255, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-            }
-
-            if(mousex > 20 + ((i % 2) * 120) && mousey > 20 + ((Math.floor(i / 2) % 2) * 120) && mousex < 120 + ((i % 2) * 120) && mousey < 120 + ((Math.floor(i / 2) % 2) * 120)) {
-
-                canvas.style.cursor = "pointer";
-
-                if(mouseUP) {
-
-                    tanks[0].id = Number(tankorder[tanks[0].id][i]);
-
-                    switch(tanks[0].id) {
-
-                        case 1:
-
-                        tanks[0].knockback = tankstats.sniper.knockback;
-                        tanks[0].spread = tankstats.sniper.spread;
-                        tanks[0].BulletS = tankstats.sniper.bspeed;
-                        tanks[0].Reload = tankstats.sniper.reload;
-                        break;
-
-                        case 2:
-
-                        tanks[0].knockback = tankstats.twin.knockback;
-                        tanks[0].spread = tankstats.twin.spread;
-                        tanks[0].BulletS = tankstats.twin.bspeed;
-                        tanks[0].Reload = tankstats.twin.reload;
-                        break;
-
-                        case 3:
-
-                        tanks[0].knockback = tankstats.flankguard.knockback;
-                        tanks[0].spread = tankstats.flankguard.spread;
-                        tanks[0].BulletS = tankstats.flankguard.bspeed;
-                        tanks[0].Reload = tankstats.flankguard.reload;
-                        break;
-
-                        case 4:
-
-                        tanks[0].knockback = tankstats.machinegun.knockback;
-                        tanks[0].spread = tankstats.machinegun.spread;
-                        tanks[0].BulletS = tankstats.machinegun.bspeed;
-                        tanks[0].Reload = tankstats.machinegun.reload;
-                        break;
-
-                    }
-
-                    return;
-
-                }
-
-            }
-
-            c.fillStyle = "rgb(200, 200, 200)";
-            c.strokeStyle = "rgb(150, 150, 150)";
-
-            c.strokeRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 100);
-
-            c.save();
-            c.translate(70 + ((i % 2) * 120), 60 + ((Math.floor(i / 2) % 2) * 120));
-            c.scale(0.7, 0.7);
-            c.rotate((millis / 3000) % 360);
-
-            tankshow[tankorder[tanks[0].id][i]]();
-
-            c.fillStyle = "rgb(100, 200, 250)";
-            c.strokeStyle = "rgb(50, 150, 200)";
-
-            c.beginPath();
-            c.arc(0, 0, 25, 0, 2 * Math.PI);
-            c.fill();
-            c.stroke();
-
-            c.restore();
-
-            c.font = "bold 15px Ubuntu";
-            c.fillStyle = "white";
-            c.fillText(classes[tankorder[tanks[0].id][i]], 70 + ((i % 2) * 120), 105 + ((Math.floor(i / 2) % 2) * 120));
-            c.fillStyle = "black";
-            c.lineWidth = 1;
-            c.strokeText(classes[tankorder[tanks[0].id][i]], 70 + ((i % 2) * 120), 105 + ((Math.floor(i / 2) % 2) * 120));
-
-        }
-
-    } else if(tanks[0].lvl >= 30 && tanks[0].id < 5) {
-
-        for(var i = 0; i < tankorder[tanks[0].id].length; i++) {
-
-            switch(i) {
-
-                case 0:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(255, 100, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(255, 50, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 1:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(100, 100, 255)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(50, 50, 255)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 2:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(220, 220, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(235, 235, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 3:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(100, 255, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(50, 255, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-            }
-
-            if(mousex > 20 + ((i % 2) * 120) && mousey > 20 + ((Math.floor(i / 2) % 2) * 120) && mousex < 120 + ((i % 2) * 120) && mousey < 120 + ((Math.floor(i / 2) % 2) * 120)) {
-
-                canvas.style.cursor = "pointer";
-
-                if(mouseUP) {
-
-                    tanks[0].id = Number(tankorder[tanks[0].id][i]);
-
-                    switch(tanks[0].id) {
-
-                        case 5:
-
-                        tanks[0].knockback = tankstats.assassin.knockback;
-                        tanks[0].spread = tankstats.assassin.spread;
-                        tanks[0].BulletS = tankstats.assassin.bspeed;
-                        tanks[0].Reload = tankstats.assassin.reload;
-                        break;
-
-                        case 6:
-
-                        tanks[0].knockback = tankstats.overseer.knockback;
-                        tanks[0].spread = tankstats.overseer.spread;
-                        tanks[0].BulletS = tankstats.overseer.bspeed;
-                        tanks[0].Reload = tankstats.overseer.reload;
-                        break;
-
-                        case 1:
-
-                        tanks[0].knockback = tankstats.predator.knockback;
-                        tanks[0].spread = tankstats.predator.spread;
-                        tanks[0].BulletS = tankstats.predator.bspeed;
-                        tanks[0].Reload = tankstats.predator.reload;
-                        break;
-
-                        case 2:
-
-                        tanks[0].knockback = tankstats.machinegun.knockback;
-                        tanks[0].spread = tankstats.machinegun.spread;
-                        tanks[0].BulletS = tankstats.machinegun.bspeed;
-                        tanks[0].Reload = tankstats.machinegun.reload;
-                        break;
-
-                        case 18:
-
-                        tanks[0].knockback = tankstats.trapper.knockback;
-                        tanks[0].spread = tankstats.trapper.spread;
-                        tanks[0].BulletS = tankstats.trapper.bspeed;
-                        tanks[0].Reload = tankstats.trapper.reload;
-                        break;
-
-                        case 21:
-
-                        tanks[0].knockback = tankstats.destroyer.knockback;
-                        tanks[0].spread = tankstats.destroyer.spread;
-                        tanks[0].BulletS = tankstats.destroyer.bspeed;
-                        tanks[0].Reload = tankstats.destroyer.reload;
-                        break;
-
-                    }
-
-                    return;
-
-                }
-
-            }
-
-            c.fillStyle = "rgb(200, 200, 200)";
-            c.strokeStyle = "rgb(150, 150, 150)";
-
-            c.strokeRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 100);
-
-            c.save();
-            c.translate(70 + ((i % 2) * 120), 60 + ((Math.floor(i / 2) % 2) * 120));
-            c.scale(0.7, 0.7);
-            c.rotate((millis / 3000) % 360);
-
-            tankshow[tankorder[tanks[0].id][i]]();
-
-            c.fillStyle = "rgb(100, 200, 250)";
-            c.strokeStyle = "rgb(50, 150, 200)";
-
-            c.beginPath();
-            c.arc(0, 0, 25, 0, 2 * Math.PI);
-            c.fill();
-            c.stroke();
-
-            c.restore();
-
-            c.font = "bold 15px Ubuntu";
-            c.fillStyle = "white";
-            c.fillText(classes[tankorder[tanks[0].id][i]], 70 + ((i % 2) * 120), 105 + ((Math.floor(i / 2) % 2) * 120));
-            c.fillStyle = "black";
-            c.lineWidth = 1;
-            c.strokeText(classes[tankorder[tanks[0].id][i]], 70 + ((i % 2) * 120), 105 + ((Math.floor(i / 2) % 2) * 120));
-
-        }
-
-    } else if(tanks[0].lvl >= 45 && (tanks[0].id < 17 || tanks[0].id === 18 || tanks[0].id === 21 || tanks[0].id === 23)) {
-
-        for(var i = 0; i < tankorder[tanks[0].id].length; i++) {
-
-            switch(i) {
-
-                case 0:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(255, 100, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(255, 50, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 1:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(100, 100, 255)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(50, 50, 255)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 2:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(220, 220, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(235, 235, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-                case 3:
-                c.lineWidth = 3;
-                c.fillStyle = "rgb(100, 255, 100)";
-                c.fillRect(20 + ((i % 2) * 120), 70 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                c.fillStyle = "rgb(50, 255, 50)";
-                c.fillRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 50);
-                break;
-
-            }
-
-            if(mousex > 20 + ((i % 2) * 120) && mousey > 20 + ((Math.floor(i / 2) % 2) * 120) && mousex < 120 + ((i % 2) * 120) && mousey < 120 + ((Math.floor(i / 2) % 2) * 120)) {
-
-                canvas.style.cursor = "pointer";
-
-                if(mouseUP) {
-
-                    tanks[0].id = Number(tankorder[tanks[0].id][i]);
-
-                    switch(tanks[0].id) {
-
-                        case 17:
-                        case 19:
-
-                        tanks[0].knockback = tankstats.landminer.knockback;
-                        tanks[0].spread = tankstats.landminer.spread;
-                        tanks[0].BulletS = tankstats.landminer.bspeed;
-                        tanks[0].Reload = tankstats.landminer.reload;
-                        break;
-
-                        case 22:
-
-                        tanks[0].knockback = tankstats.annihilator.knockback;
-                        tanks[0].spread = tankstats.annihilator.spread;
-                        tanks[0].BulletS = tankstats.annihilator.bspeed;
-                        tanks[0].Reload = tankstats.annihilator.reload;
-                        break;
-
-                        case 13:
-
-                        tanks[0].knockback = tankstats.flamethrower.knockback;
-                        tanks[0].spread = tankstats.flamethrower.spread;
-                        tanks[0].BulletS = tankstats.flamethrower.bspeed;
-                        tanks[0].Reload = tankstats.flamethrower.reload;
-                        break;
-
-                    }
-
-                    return;
-
-                }
-
-            }
-
-            c.fillStyle = "rgb(200, 200, 200)";
-            c.strokeStyle = "rgb(150, 150, 150)";
-
-            c.strokeRect(20 + ((i % 2) * 120), 20 + ((Math.floor(i / 2) % 2) * 120), 100, 100);
-
-            c.save();
-            c.translate(70 + ((i % 2) * 120), 60 + ((Math.floor(i / 2) % 2) * 120));
-            c.scale(0.7, 0.7);
-            c.rotate((millis / 3000) % 360);
-
-            tankshow[tankorder[tanks[0].id][i]]();
-
-            c.fillStyle = "rgb(100, 200, 250)";
-            c.strokeStyle = "rgb(50, 150, 200)";
-
-            c.beginPath();
-            c.arc(0, 0, 25, 0, 2 * Math.PI);
-            c.fill();
-            c.stroke();
-
-            c.restore();
-
-            c.font = "bold 15px Ubuntu";
-            c.fillStyle = "white";
-            c.fillText(classes[tankorder[tanks[0].id][i]], 70 + ((i % 2) * 120), 105 + ((Math.floor(i / 2) % 2) * 120));
-            c.fillStyle = "black";
-            c.lineWidth = 1;
-            c.strokeText(classes[tankorder[tanks[0].id][i]], 70 + ((i % 2) * 120), 105 + ((Math.floor(i / 2) % 2) * 120));
-
-        }
-
-    }
-
+function saveStats(tank) {
+    playerStats = tank;
 }
 
 function draw() {
 
-    c.lineCap = "round";
     frame++;
 
     millis = new Date();
@@ -518,26 +121,44 @@ function draw() {
     }
 
     if(s === "Menu") {
-        c.clearRect(0, 0, canvas.width, canvas.height);
-        c.drawImage(bgimg, (canvas.width / 2) - (bgimg.width / 2), (canvas.height / 2) - (bgimg.height / 2));
-        if(input.style.opacity < 1) {
-            op = millis - start;
-            input.style.opacity = op / 1000;
+        if(menuVel > 0 && !transitioningToGame) {
+            menuVel += menuFriction * 0.75;
+            op -= menuVel * 0.75;
+
+            c.save();
+            c.globalAlpha = 1 - (op / 10);
+            c.drawImage(bgimg, (canvas.width / 2) - (bgimg.width / 2), (canvas.height / 2) - (bgimg.height / 2));
+            c.restore();
+
+            input.style.opacity = 1 - (op / 10);
             input.style.border = "5px solid black";
             input.style.left = ((canvas.width / 2) - (input.size * 5)) + "px";
-            input.style.top = ((canvas.height / 3) + (50 * Math.sin((op / 13) / 50))) + "px";
+            input.style.top = ((canvas.height / 3) - (50 * (op / 13))) + "px";
 
         }
 
-    } else if(s === "FFA") {
+    } else if(s === "FFA" || s === "Death Screen") {
+
+        if(shapes.length < 150) {
+            for(var i = 0; i < 50; i++) {
+                shapes.push(new shape());
+            }
+        }
 
         if(autospin) {
             mousex = (canvas.width / 2) + Math.sin(millis / 1500) * 200;
             mousey = (canvas.height / 2) + Math.cos(millis / 1500) * 200;
         }
 
-        camx = (canvas.width / 2) - tanks[0].x;
-        camy = (canvas.height / 2) - tanks[0].y;
+        if(s === "FFA") {
+            camx = (canvas.width / 2) - tanks[0].x;
+            camy = (canvas.height / 2) - tanks[0].y;
+        } else if(killedScreen !== null){
+            camx = (canvas.width / 2) - killedScreen.x;
+            camy = (canvas.height / 2) - killedScreen.y;
+        }
+
+        c.lineCap = "round";
 
         c.strokeStyle = "rgb(180, 180, 180)";
         c.lineWidth = 1;
@@ -553,15 +174,28 @@ function draw() {
 
         c.resetTransform();
 
-        for(var i = 0; i < canvas.width / 10; i++) {
-            c.beginPath();
-            c.moveTo(0, (i * 25) - tanks[0].y % 25);
-            c.lineTo(canvas.width, (i * 25) - tanks[0].y % 25);
-            c.stroke();
-            c.beginPath();
-            c.moveTo((i * 25) - tanks[0].x % 25, 0);
-            c.lineTo((i * 25) - tanks[0].x % 25, canvas.height);
-            c.stroke();
+        if(s == "FFA") {
+            for(var i = 0; i < canvas.width / 10; i++) {
+                c.beginPath();
+                c.moveTo(0, (i * 25) - tanks[0].y % 25);
+                c.lineTo(canvas.width, (i * 25) - tanks[0].y % 25);
+                c.stroke();
+                c.beginPath();
+                c.moveTo((i * 25) - tanks[0].x % 25, 0);
+                c.lineTo((i * 25) - tanks[0].x % 25, canvas.height);
+                c.stroke();
+            }
+        } else {
+            for(var i = 0; i < canvas.width / 10; i++) {
+                c.beginPath();
+                c.moveTo(0, (i * 25) - killedScreen.y % 25);
+                c.lineTo(canvas.width, (i * 25) - killedScreen.y % 25);
+                c.stroke();
+                c.beginPath();
+                c.moveTo((i * 25) - killedScreen.x % 25, 0);
+                c.lineTo((i * 25) - killedScreen.x % 25, canvas.height);
+                c.stroke();
+            }
         }
         c.translate(camx, camy);
 
@@ -570,14 +204,14 @@ function draw() {
         for(var i = shapes.length - 1; i >= 0; i--) {
 
             if(shapes[i].x + 50 > -camx && shapes[i].x - 50 < -camx + canvas.width && shapes[i].y + 50 > -camy && shapes[i].y - 50 < -camy + canvas.height){
-                if(shapes[i].time !== frame - 1) {
-                    var x = shapes[i].velx * (frame - shapes[i].time);
-                    var y = shapes[i].vely * (frame - shapes[i].time);
-                    shapes[i].x -= x;
-                    if(y > 0) {
-                        shapes[i].y -= y;
-                    }
-                }
+                // if(shapes[i].time !== frame - 1) {
+                //     var x = shapes[i].velx * (frame - shapes[i].time);
+                //     var y = shapes[i].vely * (frame - shapes[i].time);
+                //     shapes[i].x -= x;
+                //     if(y > 0) {
+                //         shapes[i].y -= y;
+                //     }
+                // }
                 shapes[i].show();
                 shapes[i].update(frame);
             }
@@ -612,6 +246,7 @@ function draw() {
                 if(Math.abs(shapes[i].x - tanks[j].x) < 35 && Math.abs(shapes[i].y - tanks[j].y) < 35) {
 
                     shapes[i].gothit(tanks[j]);
+                    tanks[j].gotHit(shapes[i]);
                     tanks[j].h--;
 
                 }
@@ -665,20 +300,20 @@ function draw() {
 
             if(bullets[i].a <= 0) {
                 if(bullets[i].id === 2) {
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(0), bullets[i].y - Math.cos(0), 3, 0, bullets[i].t, 2, bullets[i].d / 3, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(Math.PI), bullets[i].y - Math.cos(Math.PI), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(0.5236), bullets[i].y - Math.cos(0.5236), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-0.5236), bullets[i].y - Math.cos(-0.5236), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(1.0472), bullets[i].y - Math.cos(1.0472), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-1.0472), bullets[i].y - Math.cos(-1.0472), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(1.5708), bullets[i].y - Math.cos(1.5708), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-1.5708), bullets[i].y - Math.cos(-1.5708), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(2.0944), bullets[i].y - Math.cos(2.0944), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-2.0944), bullets[i].y - Math.cos(-2.0944), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(2.618), bullets[i].y - Math.cos(2.618), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-2.618), bullets[i].y - Math.cos(-2.618), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(4.1888), bullets[i].y - Math.cos(4.1888), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
-                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-4.1888), bullets[i].y - Math.cos(-4.1888), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(0), bullets[i].y - Math.cos(0), 3, 0, bullets[i].t, 2, bullets[i].d / 3, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(Math.PI), bullets[i].y - Math.cos(Math.PI), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(0.5236), bullets[i].y - Math.cos(0.5236), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-0.5236), bullets[i].y - Math.cos(-0.5236), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(1.0472), bullets[i].y - Math.cos(1.0472), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-1.0472), bullets[i].y - Math.cos(-1.0472), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(1.5708), bullets[i].y - Math.cos(1.5708), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-1.5708), bullets[i].y - Math.cos(-1.5708), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(2.0944), bullets[i].y - Math.cos(2.0944), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-2.0944), bullets[i].y - Math.cos(-2.0944), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(2.618), bullets[i].y - Math.cos(2.618), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-2.618), bullets[i].y - Math.cos(-2.618), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(4.1888), bullets[i].y - Math.cos(4.1888), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
+                    bullets.push(new bullet(bullets[i].x, bullets[i].y, bullets[i].x + Math.sin(-4.1888), bullets[i].y - Math.cos(-4.1888), 3, 0, bullets[i].t, 2, bullets[i].d, 0.5, 1, bullets[i].user));
                 }
                 if(bullets[i].id === 1) {
 
@@ -700,41 +335,45 @@ function draw() {
                 c.strokeText(tanks[i].n, tanks[i].x, tanks[i].y - 50);
             }
         }
-        tanks[0].update(Math.atan2(-(tanks[0].x - (mousex - camx)), (tanks[0].y - (mousey - camy))));
+        if(tanks[0]) {
+            tanks[0].update(Math.atan2(-(tanks[0].x - (mousex - camx)), (tanks[0].y - (mousey - camy))));
+        }
 
         c.restore();
 
-        c.lineWidth = 20;
-        c.strokeStyle = "rgba(50, 50, 50, 0.8)";
-        c.beginPath();
-        c.lineTo((canvas.width / 2) - 250, canvas.height - 25);
-        c.lineTo((canvas.width / 2) + 250, canvas.height - 25);
-        c.stroke();
+        if(s === "FFA") {
 
-        tanks[0].xp += tanks[0].showxp / 5;
-        tanks[0].showxp /= 5;
+            c.lineWidth = 20;
+            c.strokeStyle = "rgba(50, 50, 50, 0.8)";
+            c.beginPath();
+            c.lineTo((canvas.width / 2) - 250, canvas.height - 25);
+            c.lineTo((canvas.width / 2) + 250, canvas.height - 25);
+            c.stroke();
 
-        c.lineWidth = 14;
-        c.strokeStyle = "rgb(250, 250, 150)";
-        c.beginPath();
-        c.lineTo((canvas.width / 2) - 250, canvas.height - 25);
-        c.lineTo(((canvas.width / 2) - 250) + (tanks[0].xp * (((canvas.width / 2) + 250) / (xpamt[tanks[0].lvl] * 1.199))), canvas.height - 25);
-        c.stroke();
+            tanks[0].xp += tanks[0].showxp / 5;
+            tanks[0].showxp /= 5;
 
-        c.fillStyle = "white";
-        c.strokeStyle = "black";
-        c.textAlign = "center";
-        c.textBaseline = "middle";
-        c.font = "bold 15px Ubuntu";
-        c.lineWidth = 1;
-        c.fillText("Level " + tanks[0].lvl + " " + classes[tanks[0].id], canvas.width / 2, canvas.height - 25);
-        c.font = "bold 25px Ubuntu";
-        c.fillText(tanks[0].n, canvas.width / 2, canvas.height - 50);
-        c.strokeText(tanks[0].n, canvas.width / 2, canvas.height - 50);
+            c.lineWidth = 14;
+            c.strokeStyle = "rgb(250, 250, 150)";
+            c.beginPath();
+            c.lineTo((canvas.width / 2) - 250, canvas.height - 25);
+            c.lineTo(((canvas.width / 2) - 250) + (tanks[0].xp * (((canvas.width / 2) + 250) / (xpamt[tanks[0].lvl] * 1.199))), canvas.height - 25);
+            c.stroke();
 
-        upgradeScreen();
+            c.fillStyle = "white";
+            c.strokeStyle = "black";
+            c.textAlign = "center";
+            c.textBaseline = "middle";
+            c.font = "bold 15px Ubuntu";
+            c.lineWidth = 1;
+            c.fillText("Level " + tanks[0].lvl + " " + classes[tanks[0].id], canvas.width / 2, canvas.height - 25);
+            c.font = "bold 25px Ubuntu";
+            c.fillText(tanks[0].n, canvas.width / 2, canvas.height - 50);
+            c.strokeText(tanks[0].n, canvas.width / 2, canvas.height - 50);
 
-        if(tanks[0].xppoints > 0) {
+            upgradeScreen();
+
+            if(tanks[0].xppoints > 0) {
 
             for(var i = 0; i < 8; i++) {
 
@@ -1013,16 +652,88 @@ function draw() {
 
         }
 
-        if(tanks[0].dead) {
-            returnMenu();
+            if(tanks[0].dead) {
+                returnMenu();
+            }
+        } else {
+
+            c.lineWidth = 3;
+
+            c.fillStyle = "rgba(0, 0, 0, 0.5";
+            c.fillRect(0, 0, canvas.width, canvas.height);
+
+            if(killedScreen !== null) {
+
+                c.fillStyle = "rgb(255, 255, 255)";
+                c.font = "bold 40px Ubuntu";
+                c.fillText("You were killed by " + killedScreen.n, canvas.width / 2, 100);
+                c.font = "bold 30px Ubuntu";
+                c.fillText("Level " + killedScreen.lvl, 200, 350);
+                c.fillText(classes[killedScreen.id], 200, 380);
+                c.font = "bold 20px Ubuntu";
+                c.fillText("Health left: " + killedScreen.H, 380, 250);
+
+                line(500, 170, 500, 330);
+
+                c.textAlign = "left";
+                c.font = "bold 15px Ubuntu";
+                c.fillText("Max Health: " + killedScreen.healthpoints, 520, 180);
+                c.fillText("Health Regen: " + killedScreen.regenpoints, 520, 200);
+                c.fillText("Body Damage: " + killedScreen.bodydamagepoints, 520, 220);
+                c.fillText("Bullet Speed: " + killedScreen.bulletSpoints, 520, 240);
+                c.fillText("Bullet Damage: " + killedScreen.bulletDpoints, 520, 260);
+                c.fillText("Bullet Penetration: " + killedScreen.bulletPpoints, 520, 280);
+                c.fillText("Reload: " + killedScreen.reloadpoints, 520, 300);
+                c.fillText("Movement Speed: " + killedScreen.movementspeedpoints, 520, 320);
+
+
+                c.textAlign = "center";
+
+                c.save();
+                c.translate(200, 250);
+                c.scale(1.2, 1.2);
+                c.rotate(frame / 100);
+
+                c.fillStyle = "rgb(200, 200, 200)";
+                c.strokeStyle = "rgb(150, 150, 150)";
+                tankshow[killedScreen.id]();
+
+                c.fillStyle = "rgb(100, 200, 250)";
+                c.strokeStyle = "rgb(50, 150, 200)";
+                circle(0, 0, 25);
+
+                c.restore();
+
+            } else {
+
+                c.font = "bold 40px Ubuntu";
+                c.fillStyle = "rgb(255, 255, 255)";
+                c.fillText("You died to a shape. R.I.P.", canvas.width / 2, canvas.height / 2);
+
+            }
+
+            c.font = "bold 20px Ubuntu";
+            c.fillStyle = "rgb(255, 255, 255)";
+            c.fillText("(press enter to continue)", canvas.width / 2, (canvas.height / 7) * 6);
+
         }
 
+    }
+
+    if(transitioningToGame) {
+        disappearInput();
+    }else if(transitioningToMenu && menuVel > 0 && !transitioningToGame) {
+        bringBackMenu();
+    } else if(transitioningToMenu && menuVel <= 0 && !transitioningToGame) {
+        transitioningToMenu == false;
+        s == "Menu";
     }
 
     mouseUP = false;
     requestAnimationFrame(draw);
 
 }
+
 window.addEventListener("mousemove", function(e) {
     if(!autospin) {
         mousex = e.clientX;
@@ -1056,111 +767,108 @@ window.addEventListener("resize", function() {
 });
 window.addEventListener("keyup", function(e) {
     e.preventDefault();
-    if(keys[13] && s === "Menu") {
+    switch(e.keyCode) {
 
-        playGame();
+        case 13:
+            if(s === "Menu" && !transitioningToGame) {
+                playGame();
+            } else if(s === "Death Screen") {
+                op = 10;
+                menuVel = 1;
+                transitioningToMenu = true;
+                s = "Menu";
+            }
+            break;
 
-    }
-    if(keys[69]) {
-        if(!autofire) autofire = true;
-        else autofire = false;
-    }
-    if(keys[67]) {
-        if(!autospin) autospin = true;
-        else autospin = false;
-    }
-    if(keys[79]) {
-        tanks[0].dead = true;
-    }
-    if(keys[49]) {
+        case 69:
+            if(!autofire) autofire = true;
+            else autofire = false;
+            break;
 
-        if(tanks[0].xppoints > 0 && tanks[0].healthpoints < 8) {
+        case 67:
+            if(!autospin) autospin = true;
+            else autospin = false;
+            break;
 
-            tanks[0].xppoints--;
-            tanks[0].healthpoints++;
+        case 79:
+            if(s !== "Menu") {
+                tanks[0].dead = true;
+                tanks[0].gotHit(tanks[0]);
+            }
+            break;
 
-        }
+        case 49:
+            if(tanks[0].xppoints > 0 && tanks[0].healthpoints < 8) {
+                tanks[0].xppoints--;
+                tanks[0].healthpoints++;
+            }
+            break;
 
-    }
-    if(keys[50]) {
+        case 50:
+            if(tanks[0].xppoints > 0 && tanks[0].regenpoints < 8) {
+                tanks[0].xppoints--;
+                tanks[0].regenpoints++;
+            }
+            break;
 
-        if(tanks[0].xppoints > 0 && tanks[0].regenpoints < 8) {
+        case 51:
+            if(tanks[0].xppoints > 0 && tanks[0].bodydamagepoints < 8) {
+                tanks[0].xppoints--;
+                tanks[0].bodydamagepoints++;
+            }
+            break;
 
-            tanks[0].xppoints--;
-            tanks[0].regenpoints++;
+            case 52:
+            if(tanks[0].xppoints > 0 && tanks[0].bulletSpoints < 8) {
+                tanks[0].xppoints--;
+                tanks[0].bulletSpoints++;
+            }
+            break;
 
-        }
+        case 53:
+            if(tanks[0].xppoints > 0 && tanks[0].bulletDpoints < 8) {
+                tanks[0].xppoints--;
+                tanks[0].bulletDpoints++;
+            }
+            break;
 
-    }
-    if(keys[51]) {
+        case 54:
+            if(tanks[0].xppoints > 0 && tanks[0].bulletPpoints < 8) {
+                tanks[0].xppoints--;
+                tanks[0].bulletPpoints++;
+            }
+            break;
 
-        if(tanks[0].xppoints > 0 && tanks[0].bodydamagepoints < 8) {
+        case 55:
+            if(tanks[0].xppoints > 0 && tanks[0].reloadpoints < 8) {
+                tanks[0].xppoints--;
+                tanks[0].reloadpoints++;
+            }
+            break;
 
-            tanks[0].xppoints--;
-            tanks[0].bodydamagepoints++;
-
-        }
-
-    }
-    if(keys[52]) {
-
-        if(tanks[0].xppoints > 0 && tanks[0].bulletSpoints < 8) {
-
-            tanks[0].xppoints--;
-            tanks[0].bulletSpoints++;
-
-        }
-
-    }
-    if(keys[53]) {
-
-        if(tanks[0].xppoints > 0 && tanks[0].bulletDpoints < 8) {
-
-            tanks[0].xppoints--;
-            tanks[0].bulletDpoints++;
-
-        }
-
-    }
-    if(keys[54]) {
-
-        if(tanks[0].xppoints > 0 && tanks[0].bulletPpoints < 8) {
-
-            tanks[0].xppoints--;
-            tanks[0].bulletPpoints++;
-
-        }
-
-    }
-    if(keys[55]) {
-
-        if(tanks[0].xppoints > 0 && tanks[0].reloadpoints < 8) {
-
-            tanks[0].xppoints--;
-            tanks[0].reloadpoints++;
-
-        }
-
-    }
-    if(keys[56]) {
-
-        if(tanks[0].xppoints > 0 && tanks[0].movementspeedpoints < 8) {
-
-            tanks[0].xppoints--;
-            tanks[0].movementspeedpoints++;
-
-        }
-
+        case 56:
+            if(tanks[0].xppoints > 0 && tanks[0].movementspeedpoints < 8) {
+                tanks[0].xppoints--;
+                tanks[0].movementspeedpoints++;
+            }
+            break;
     }
     keys[e.keyCode] = false;
 });
-
-if (document.addEventListener) {
-    document.addEventListener('contextmenu', function(e) {
+document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
-    }, false);
-} else {
-    document.attachEvent('oncontextmenu', function() {
-        window.event.returnValue = false;
-    });
+}, false);
+
+function line(x1, y1, x2, y2) {
+    c.beginPath();
+    c.moveTo(x1, y1);
+    c.lineTo(x2, y2);
+    c.stroke();
+};
+
+function circle(x, y, r) {
+    c.beginPath();
+    c.arc(x, y, r, 0, 2 * Math.PI);
+    c.fill();
+    c.stroke();
 }
