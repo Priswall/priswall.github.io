@@ -300,91 +300,37 @@ var tankstats = {
 var tankshow = [
     function() {
         c.fillRect(-9, 0, 18, -50);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -50);
-        c.lineTo(9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -50);
-        c.stroke();
+        line(-9, 0, -9, -50);
+        line(-9, -50, 9, -50);
+        line(9, 0, 9, -50);
     },
     function() {
         c.fillRect(-9, 0, 18, -55);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -55);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -55);
-        c.lineTo(9, -55);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -55);
-        c.stroke();
+        line(-9, 0, -9, -55);
+        line(-9, -55, 9, -55);
+        line(9, 0, 9, -55);
     },
     function() {
         c.fillRect(3, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(3, 0);
-        c.lineTo(3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(3, -50);
-        c.lineTo(24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(24, 0);
-        c.lineTo(24, -50);
-        c.stroke();
+        line(3, 0, 3, -50);
+        line(3, -50, 24, -50);
+        line(24, 0, 24, -50);
 
         c.fillRect(-24, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(-24, 0);
-        c.lineTo(-24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-24, -50);
-        c.lineTo(-3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-3, -50);
-        c.lineTo(-3, 0);
-        c.stroke();
+        line(-24, 0, -24, -50);
+        line(-24, -50, -3, -50);
+        line(-3, -50, -3, 0);
     },
     function() {
         c.fillRect(-9, 0, 18, -50);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -50);
-        c.lineTo(9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -50);
-        c.stroke();
+        line(-9, 0, -9, -50);
+        line(-9, -50, 9, -50);
+        line(9, 0, 9, -50);
 
         c.fillRect(-9, 0, 18, 40);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 40);
-        c.lineTo(9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 40);
-        c.stroke();
+        line(-9, 0, -9, 40);
+        line(-9, 40, 9, 40);
+        line(9, 0, 9, 40);
     },
     function() {
         c.beginPath();
@@ -394,35 +340,17 @@ var tankshow = [
         c.lineTo(0, 0);
         c.fill();
 
-        c.beginPath();
-        c.moveTo(-5, 0);
-        c.lineTo(-20, -40);
-        c.stroke();
+        line(-5, 0, -20, -40);
 
-        c.beginPath();
-        c.lineTo(-20, -40);
-        c.lineTo(20, -40);
-        c.stroke();
+        line(-20, -40, 20, -40);
 
-        c.beginPath();
-        c.lineTo(20, -40);
-        c.lineTo(5, 0);
-        c.stroke();
+        line(20, -40, 5, 0);
     },
     function() {
         c.fillRect(-9, 0, 18, -65);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -65);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -65);
-        c.lineTo(9, -65);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -65);
-        c.stroke();
+        line(-9, 0, -9, -65);
+        line(-9, -65, 9, -65);
+        line(9, 0, 9, -65);
     },
     function() {
         c.beginPath();
@@ -431,21 +359,9 @@ var tankshow = [
         c.lineTo(-35, 20);
         c.lineTo(0, 10);
         c.fill();
-
-        c.beginPath();
-        c.moveTo(0, -5);
-        c.lineTo(-35, -20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(-35, -20);
-        c.lineTo(-35, 20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(-35, 20);
-        c.lineTo(0, 5);
-        c.stroke();
+        line(0, -5, -35, -20);
+        line(-35, -20, -35, 20);
+        line(-35, 20, 0, 5);
 
         c.beginPath();
         c.moveTo(0, 10);
@@ -453,381 +369,147 @@ var tankshow = [
         c.lineTo(35, -20);
         c.lineTo(0, -5);
         c.fill();
-
-        c.beginPath();
-        c.moveTo(0, 10);
-        c.lineTo(35, 20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(35, 20);
-        c.lineTo(35, -20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(35, -20);
-        c.lineTo(0, -5);
-        c.stroke();
+        line(0, 10, 35, 20);
+        line(35, 20, 35, -20);
+        line(35, -20, 0, -5);
     },
     function() {
         c.fillRect(-9, 0, 18, -55);
-
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -55);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(-9, -55);
-        c.lineTo(9, -55);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -55);
-        c.stroke();
+        line(-9, 0, -9, -55);
+        line(-9, -55, 9, -55);
+        line(9, 0, 9, -55);
 
         c.fillRect(-13, 0, 26, -48);
-
-        c.beginPath();
-        c.moveTo(-13, 0);
-        c.lineTo(-13, -48);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(-13, -48);
-        c.lineTo(13, -48);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(13, 0);
-        c.lineTo(13, -48);
-        c.stroke();
+        line(-13, 0, -13, -48);
+        line(-13, -48, 13, -48);
+        line(13, 0, 13, -48);
     },
     function() {
         c.fillRect(3, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(3, 0);
-        c.lineTo(3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(3, -50);
-        c.lineTo(24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(24, 0);
-        c.lineTo(24, -50);
-        c.stroke();
+        line(3, 0, 3, -50);
+        line(3, -50, 24, -50);
+        line(24, 0, 24, -50);
 
         c.fillRect(-24, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(-24, 0);
-        c.lineTo(-24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-24, -50);
-        c.lineTo(-3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-3, -50);
-        c.lineTo(-3, 0);
-        c.stroke();
+        line(-24, 0, -24, -50);
+        line(-24, -50, -3, -50);
+        line(-3, -50, -3, 0);
 
         c.fillRect(3, 0, 20, 50);
-        c.beginPath();
-        c.moveTo(3, 0);
-        c.lineTo(3, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(3, 50);
-        c.lineTo(24, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(24, 0);
-        c.lineTo(24, 50);
-        c.stroke();
+        line(3, 0, 3, 50);
+        line(3, 50, 24, 50);
+        line(24, 0, 24, 50);
 
         c.fillRect(-24, 0, 20, 50);
-        c.beginPath();
-        c.moveTo(-24, 0);
-        c.lineTo(-24, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-24, 50);
-        c.lineTo(-3, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-3, 50);
-        c.lineTo(-3, 0);
-        c.stroke();
+        line(-24, 0, -24, 50);
+        line(-24, 50, -3, 50);
+        line(-3, 50, -3, 0);
     },
     function() {
         c.fillRect(-10, 0, 18, -50);
-        c.beginPath();
-        c.moveTo(-10, 0);
-        c.lineTo(-10, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-10, -50);
-        c.lineTo(10, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(10, 0);
-        c.lineTo(10, -50);
-        c.stroke();
+        line(-10, 0, -10, -50);
+        line(-10, -50, 10, -50);
+        line(10, 0, 10, -50);
 
         c.save();
         c.translate(-10, 0);
         c.rotate(0.75);
         c.fillRect(0, 0, 18, -55);
-        c.beginPath();
-        c.moveTo(0, 0);
-        c.lineTo(0, -55);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(0, -55);
-        c.lineTo(20, -55);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(20, 0);
-        c.lineTo(20, -55);
-        c.stroke();
+        line(0, 0, 0, -55);
+        line(0, -55, 20, -55);
+        line(20, 0, 20, -55);
         c.restore();
 
         c.save();
         c.translate(-10, 0);
         c.rotate(-0.75);
         c.fillRect(-5, 0, 18, -40);
-        c.beginPath();
-        c.moveTo(-5, 0);
-        c.lineTo(-5, -40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-5, -40);
-        c.lineTo(15, -40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(15, 0);
-        c.lineTo(15, -40);
-        c.stroke();
+        line(-5, 0, -5, -40);
+        line(-5, -40, 15, -40);
+        line(15, 0, 15, -40);
         c.restore();
     },
     function() {
         c.fillRect(-9, 0, 18, -50);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -50);
-        c.lineTo(9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -50);
-        c.stroke();
+        line(-9, 0, -9, -50);
+        line(-9, -50, 9, -50);
+        line(9, 0, 9, -50);
 
         c.fillRect(9, 0, -18, 50);
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 50);
-        c.lineTo(-9, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 50);
-        c.stroke();
+        line(9, 0, 9, 50);
+        line(9, 50, -9, 50);
+        line(-9, 0, -9, 50);
 
         c.fillRect(0, -9, -50, 18);
-        c.beginPath();
-        c.moveTo(0, -9);
-        c.lineTo(-50, -9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-50, -9);
-        c.lineTo(-50, 9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-50, 9);
-        c.lineTo(0, 9);
-        c.stroke();
+        line(0, -9, -50, -9);
+        line(-50, -9, -50, 9);
+        line(-50, 9, 0, 9);
 
         c.fillRect(0, 9, 50, -18);
-        c.beginPath();
-        c.moveTo(0, 9);
-        c.lineTo(50, 9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(50, 9);
-        c.lineTo(50, -9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(50, -9);
-        c.lineTo(0, -9);
-        c.stroke();
+        line(0, 9, 50, 9);
+        line(50, 9, 50, -9);
+        line(50, -9, 0, -9);
     },
     function() {
         c.fillRect(3, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(3, 0);
-        c.lineTo(3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(3, -50);
-        c.lineTo(24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(24, 0);
-        c.lineTo(24, -50);
-        c.stroke();
+        line(3, 0, 3, -50);
+        line(3, -50, 24, -50);
+        line(24, 0, 24, -50);
 
         c.fillRect(-24, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(-24, 0);
-        c.lineTo(-24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-24, -50);
-        c.lineTo(-3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-3, -50);
-        c.lineTo(-3, 0);
-        c.stroke();
+        line(-24, 0, -24, -50);
+        line(-24, -50, -3, -50);
+        line(-3, -50, -3, 0);
 
         c.fillRect(-9, 0, 18, -55);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -55);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -55);
-        c.lineTo(9, -55);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -55);
-        c.stroke();
+        line(-9, 0, -9, -55);
+        line(-9, -55, 9, -55);
+        line(9, 0, 9, -55);
     },
     function() {
         c.fillRect(-9, 0, 18, -50);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -50);
-        c.lineTo(9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -50);
-        c.stroke();
+        line(-9, 0, -9, -50);
+        line(-9, -50, 9, -50);
+        line(9, 0, 9, -50);
 
         c.fillRect(9, 0, -18, 50);
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 50);
-        c.lineTo(-9, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 50);
-        c.stroke();
+        line(9, 0, 9, 50);
+        line(9, 50, -9, 50);
+        line(-9, 0, -9, 50);
 
         c.fillRect(0, -9, -50, 18);
-        c.beginPath();
-        c.moveTo(0, -9);
-        c.lineTo(-50, -9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-50, -9);
-        c.lineTo(-50, 9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-50, 9);
-        c.lineTo(0, 9);
-        c.stroke();
+        line(0, -9, -50, -9);
+        line(-50, -9, -50, 9);
+        line(-50, 9, 0, 9);
 
         c.fillRect(0, 9, 50, -18);
-        c.beginPath();
-        c.moveTo(0, 9);
-        c.lineTo(50, 9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(50, 9);
-        c.lineTo(50, -9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(50, -9);
-        c.lineTo(0, -9);
-        c.stroke();
+        line(0, 9, 50, 9);
+        line(50, 9, 50, -9);
+        line(50, -9, 0, -9);
 
         c.save();
         c.translate(0, 0);
         c.rotate(0.7854);
 
         c.fillRect(-9, 0, 18, -50);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -50);
-        c.lineTo(9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -50);
-        c.stroke();
+        line(-9, 0, -9, -50);
+        line(-9, -50, 9, -50);
+        line(9, 0, 9, -50);
 
         c.fillRect(9, 0, -18, 50);
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 50);
-        c.lineTo(-9, 50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 50);
-        c.stroke();
+        line(9, 0, 9, 50);
+        line(9, 50, -9, 50);
+        line(-9, 0, -9, 50);
 
         c.fillRect(0, -9, -50, 18);
-        c.beginPath();
-        c.moveTo(0, -9);
-        c.lineTo(-50, -9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-50, -9);
-        c.lineTo(-50, 9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-50, 9);
-        c.lineTo(0, 9);
-        c.stroke();
+        line(0, -9, -50, -9);
+        line(-50, -9, -50, 9);
+        line(-50, 9, 0, 9);
 
         c.fillRect(0, 9, 50, -18);
-        c.beginPath();
-        c.moveTo(0, 9);
-        c.lineTo(50, 9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(50, 9);
-        c.lineTo(50, -9);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(50, -9);
-        c.lineTo(0, -9);
-        c.stroke();
+        line(0, 9, 50, 9);
+        line(50, 9, 50, -9);
+        line(50, -9, 0, -9);
         c.restore();
     },
     function() {
@@ -849,83 +531,34 @@ var tankshow = [
         c.lineTo(20, -35);
         c.lineTo(0, 0);
         c.fill();
-
-        c.beginPath();
-        c.moveTo(-5, 0);
-        c.lineTo(-20, -35);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(-20, -35);
-        c.lineTo(20, -35);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(20, -35);
-        c.lineTo(5, 0);
-        c.stroke();
+        line(-5, 0, -20, -35);
+        line(-20, -35, 20, -35);
+        line(20, -35, 5, 0);
     },
     function() {
         c.fillRect(3, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(3, 0);
-        c.lineTo(3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(3, -50);
-        c.lineTo(24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(24, 0);
-        c.lineTo(24, -50);
-        c.stroke();
+        line(3, 0, 3, -50);
+        line(3, -50, 24, -50);
+        line(24, 0, 24, -50);
 
         c.fillRect(-24, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(-24, 0);
-        c.lineTo(-24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-24, -50);
-        c.lineTo(-3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-3, -50);
-        c.lineTo(-3, 0);
-        c.stroke();
+        line(-24, 0, -24, -50);
+        line(-24, -50, -3, -50);
+        line(-3, -50, -3, 0);
 
         c.save();
         c.translate(0, 0);
         c.rotate(2.095);
 
         c.fillRect(3, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(3, 0);
-        c.lineTo(3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(3, -50);
-        c.lineTo(24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(24, 0);
-        c.lineTo(24, -50);
-        c.stroke();
+        line(3, 0, 3, -50);
+        line(3, -50, 24, -50);
+        line(24, 0, 24, -50);
 
         c.fillRect(-24, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(-24, 0);
-        c.lineTo(-24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-24, -50);
-        c.lineTo(-3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-3, -50);
-        c.lineTo(-3, 0);
-        c.stroke();
-
+        line(-24, 0, -24, -50);
+        line(-24, -50, -3, -50);
+        line(-3, -50, -3, 0);
         c.restore();
 
         c.save();
@@ -933,33 +566,14 @@ var tankshow = [
         c.rotate(-2.095);
 
         c.fillRect(3, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(3, 0);
-        c.lineTo(3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(3, -50);
-        c.lineTo(24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(24, 0);
-        c.lineTo(24, -50);
-        c.stroke();
+        line(3, 0, 3, -50);
+        line(3, -50, 24, -50);
+        line(24, 0, 24, -50);
 
         c.fillRect(-24, 0, 20, -50);
-        c.beginPath();
-        c.moveTo(-24, 0);
-        c.lineTo(-24, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-24, -50);
-        c.lineTo(-3, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-3, -50);
-        c.lineTo(-3, 0);
-        c.stroke();
-
+        line(-24, 0, -24, -50);
+        line(-24, -50, -3, -50);
+        line(-3, -50, -3, 0);
         c.restore();
     },
     function() {
@@ -970,20 +584,9 @@ var tankshow = [
         c.lineTo(0, 10);
         c.fill();
 
-        c.beginPath();
-        c.moveTo(0, -5);
-        c.lineTo(-35, -20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(-35, -20);
-        c.lineTo(-35, 20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(-35, 20);
-        c.lineTo(0, 5);
-        c.stroke();
+        line(0, -5, -35, -20);
+        line(-35, -20, -35, 20);
+        line(-35, 20, 0, 5);
 
         c.beginPath();
         c.moveTo(0, 10);
@@ -992,20 +595,9 @@ var tankshow = [
         c.lineTo(0, -5);
         c.fill();
 
-        c.beginPath();
-        c.moveTo(0, 10);
-        c.lineTo(35, 20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(35, 20);
-        c.lineTo(35, -20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(35, -20);
-        c.lineTo(0, -5);
-        c.stroke();
+        line(0, 10, 35, 20);
+        line(35, 20, 35, -20);
+        line(35, -20, 0, -5);
 
         c.save();
         c.translate(0, 0);
@@ -1018,20 +610,9 @@ var tankshow = [
         c.lineTo(0, 10);
         c.fill();
 
-        c.beginPath();
-        c.moveTo(0, -5);
-        c.lineTo(-35, -20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(-35, -20);
-        c.lineTo(-35, 20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(-35, 20);
-        c.lineTo(0, 5);
-        c.stroke();
+        line(0, -5, -35, -20);
+        line(-35, -20, -35, 20);
+        line(-35, 20, 0, 5);
 
         c.beginPath();
         c.moveTo(0, 10);
@@ -1040,24 +621,13 @@ var tankshow = [
         c.lineTo(0, -5);
         c.fill();
 
-        c.beginPath();
-        c.moveTo(0, 10);
-        c.lineTo(35, 20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(35, 20);
-        c.lineTo(35, -20);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(35, -20);
-        c.lineTo(0, -5);
-        c.stroke();
+        line(0, 10, 35, 20);
+        line(35, 20, 35, -20);
+        line(35, -20, 0, -5);
 
         c.restore();
     },
-    function () {
+    function() {
 
         c.rect(-15, -30, 30, 30);
         c.fill();
@@ -1068,7 +638,7 @@ var tankshow = [
         c.stroke();
 
     },
-    function () {
+    function() {
 
         c.rect(-10, -30, 20, 30);
         c.fill();
@@ -1091,7 +661,7 @@ var tankshow = [
         c.stroke();
 
     },
-    function () {
+    function() {
 
         c.rect(-15, -30, 30, 30);
         c.fill();
@@ -1114,7 +684,7 @@ var tankshow = [
         c.stroke();
 
     },
-    function () {
+    function() {
 
         c.rect(-10, -30, 20, 30);
         c.fill();
@@ -1189,33 +759,15 @@ var tankshow = [
     },
     function() {
         c.fillRect(-20, 0, 40, -50);
-        c.beginPath();
-        c.moveTo(-20, 0);
-        c.lineTo(-20, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-20, -50);
-        c.lineTo(20, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(20, 0);
-        c.lineTo(20, -50);
-        c.stroke();
+        line(-20, 0, -20, -50);
+        line(-20, -50, 20, -50);
+        line(20, 0, 20, -50);
     },
     function() {
         c.fillRect(-25, 0, 50, -50);
-        c.beginPath();
-        c.moveTo(-25, 0);
-        c.lineTo(-25, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-25, -50);
-        c.lineTo(25, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(25, 0);
-        c.lineTo(25, -50);
-        c.stroke();
+        line(-25, 0, -25, -50);
+        line(-25, -50, 25, -50);
+        line(25, 0, 25, -50);
     },
     function() {
 
@@ -1224,197 +776,83 @@ var tankshow = [
         c.fillRect(2.5, 0, 10, -50);
         c.fillRect(15, 0, 10, -40);
 
-        c.beginPath();
-        c.moveTo(-25, 0);
-        c.lineTo(-25, -40);
-        c.stroke();
+        line(-25, 0, -25, -40);
+        line(-25, -40, -15, -40);
+        line(-15, -40, -15, 0);
 
-        c.beginPath();
-        c.moveTo(-25, -40);
-        c.lineTo(-15, -40);
-        c.stroke();
+        line(-12.5, 0, -12.5, -50);
+        line(-12.5, -50, -2.5, -50);
+        line(-2.5, -50, -2.5, 0);
 
-        c.beginPath();
-        c.moveTo(-15, -40);
-        c.lineTo(-15, 0);
-        c.stroke();
+        line(12.5, 0, 12.5, -50);
+        line(12.5, -50, 2.5, -50);
+        line(2.5, -50, 2.5, 0);
 
-        c.beginPath();
-        c.moveTo(-12.5, 0);
-        c.lineTo(-12.5, -50);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(-12.5, -50);
-        c.lineTo(-2.5, -50);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(-2.5, -50);
-        c.lineTo(-2.5, 0);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(12.5, 0);
-        c.lineTo(12.5, -50);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(12.5, -50);
-        c.lineTo(2.5, -50);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(2.5, -50);
-        c.lineTo(2.5, 0);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(25, 0);
-        c.lineTo(25, -40);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(25, -40);
-        c.lineTo(15, -40);
-        c.stroke();
-
-        c.beginPath();
-        c.moveTo(15, -40);
-        c.lineTo(15, 0);
-        c.stroke();
+        line(25, 0, 25, -40);
+        line(25, -40, 15, -40);
+        line(15, -40, 15, 0);
 
     },
     function() {
         c.fillRect(-9, 0, 18, -50);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -50);
-        c.lineTo(9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -50);
-        c.stroke();
+        line(-9, 0, -9, -50);
+        line(-9, -50, 9, -50);
+        line(9, 0, 9, -50);
 
         c.save();
         c.rotate(0.5236);
+
         c.fillRect(-9, 0, 18, 40);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 40);
-        c.lineTo(9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 40);
-        c.stroke();
+        line(-9, 0, -9, 40);
+        line(-9, 40, 9, 40);
+        line(9, 0, 9, 40);
         c.restore();
 
         c.save();
         c.rotate(-0.5236);
+
         c.fillRect(-9, 0, 18, 40);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 40);
-        c.lineTo(9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 40);
-        c.stroke();
+        line(-9, 0, -9, 40);
+        line(-9, 40, 9, 40);
+        line(9, 0, 9, 40);
         c.restore();
     },
     function() {
         c.fillRect(-9, 0, 18, -50);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, -50);
-        c.lineTo(9, -50);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, -50);
-        c.stroke();
+        line(-9, 0, -9, -50);
+        line(-9, -50, 9, -50);
+        line(9, 0, 9, -50);
 
         c.save();
         c.rotate(0.4);
         c.fillRect(-9, 0, 18, 40);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 40);
-        c.lineTo(9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 40);
-        c.stroke();
+        line(-9, 0, -9, 40);
+        line(-9, 40, 9, 40);
+        line(9, 0, 9, 40);
         c.restore();
 
         c.save();
         c.rotate(-0.4);
         c.fillRect(-9, 0, 18, 40);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 40);
-        c.lineTo(9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 40);
-        c.stroke();
+        line(-9, 0, -9, 40);
+        line(-9, 40, 9, 40);
+        line(9, 0, 9, 40);
         c.restore();
 
         c.save();
         c.rotate(0.6);
         c.fillRect(-9, 0, 18, 40);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 40);
-        c.lineTo(9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 40);
-        c.stroke();
+        line(-9, 0, -9, 40);
+        line(-9, 40, 9, 40);
+        line(9, 0, 9, 40);
         c.restore();
 
         c.save();
         c.rotate(-0.6);
         c.fillRect(-9, 0, 18, 40);
-        c.beginPath();
-        c.moveTo(-9, 0);
-        c.lineTo(-9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(-9, 40);
-        c.lineTo(9, 40);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(9, 0);
-        c.lineTo(9, 40);
-        c.stroke();
+        line(-9, 0, -9, 40);
+        line(-9, 40, 9, 40);
+        line(9, 0, 9, 40);
         c.restore();
     }
 ];
@@ -1422,9 +860,9 @@ var tankshow = [
 function tank(x, y, r, t, n, xp, lvl, id, userID) {
     this.x = x;
     this.y = y;
-    this.a = 1;
-    this.ss = 1;
-    this.dr = 0;
+    this.alpha = 1;
+    this.deathSize = 1;
+    this.rotatingBarrel = 0;
     this.barrel = 0;
     this.showxp = 0;
     this.xppoints = 50;
@@ -1452,11 +890,11 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
     this.bulletDpoints = 0;
     this.reloadpoints = 0;
     this.movementspeedpoints = 0;
-    this.H = 20;
-    this.h = 20;
-    this.r = r;
-    this.t = t;
-    this.n = n;
+    this.Health = 20;
+    this.health = 20;
+    this.rotation = r;
+    this.team = t;
+    this.name = n;
     this.xp = xp;
     this.lvl = 50;
     this.id = id;
@@ -1466,16 +904,18 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
     this.timetill = 0;
 
     this.gotHit = function(other) {
-        if(this.dead === true) {
-            switch(other.constructor.name) {
-                case "bullet":
-                    killedScreen = other.user;
-                    break;
+        switch(other.constructor.name) {
+            case "bullet":
+                killedScreen = other.user;
+                break;
 
-                case "tank":
-                    killedScreen = other;
-                    break;
-            }
+            case "tank":
+                killedScreen = other;
+                break;
+
+            case "shape":
+                killedScreen = this;
+                break;
         }
     }
 
@@ -1483,15 +923,15 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
 
         if(this.dead) {
 
-            this.a -= 0.05;
-            this.ss+=0.05;
+            this.alpha -= 0.05;
+            this.deathSize+=0.05;
             saveStats(this);
 
         }
 
-        if(this.a < 0) {
+        if(this.alpha < 0) {
 
-            this.a = 0;
+            this.alpha = 0;
             tanks.splice(tanks.indexOf(this), 1);
 
         }
@@ -1500,7 +940,7 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
 
     this.update = function(r) {
 
-        if(this.h <= 0) {
+        if(this.health <= 0) {
             this.dead = true;
         }
         this.die();
@@ -1511,7 +951,7 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
         this.reload = this.Reload - ((this.Reload / 16) * this.reloadpoints);
         this.maxSpeed = this.MaxSpeed + ((this.MaxSpeed / 16) * this.movementspeedpoints);
 
-        this.r = r;
+        this.rotation = r;
 
         if(keys[87] && !keys[83]) {
             this.vely -= this.acc;
@@ -1593,11 +1033,11 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
                     case 0:
                     case 1:
                     case 5:
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                     this.reloading = true;
 
-                    this.dx = Math.sin(this.r);
-                    this.dy = -Math.cos(this.r);
+                    this.dx = Math.sin(this.rotation);
+                    this.dy = -Math.cos(this.rotation);
                     this.mag = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
 
                     this.velx -= ((this.dx / this.mag) * (this.knockback / 2));
@@ -1607,16 +1047,16 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
 
                     case 2:
                     if(!this.bullet) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.29) * 50, this.y - Math.cos(this.r + 0.29) * 50, (this.x + Math.sin(this.r + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.29) * 50, this.y - Math.cos(this.rotation + 0.29) * 50, (this.x + Math.sin(this.rotation + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.bullet = 1;
                     } else {
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.29) * 50, this.y - Math.cos(this.r - 0.29) * 50, (this.x + Math.sin(this.r - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.29) * 50, this.y - Math.cos(this.rotation - 0.29) * 50, (this.x + Math.sin(this.rotation - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.bullet = 0;
                     }
                     this.reloading = true;
 
-                    this.dx = Math.sin(this.r);
-                    this.dy = -Math.cos(this.r);
+                    this.dx = Math.sin(this.rotation);
+                    this.dy = -Math.cos(this.rotation);
                     this.mag = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
 
                     this.velx -= ((this.dx / this.mag) * (this.knockback / 2));
@@ -1625,17 +1065,17 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
                     break;
 
                     case 3:
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, this.x + Math.sin(this.r) * 70, this.y - Math.cos(this.r) * 70, 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                    bullets.push(new bullet(this.x + Math.sin(this.r + (180 * (Math.PI / 180))) * 40, this.y - Math.cos(this.r + (180 * (Math.PI / 180))) * 40, this.x + Math.sin(this.r + (180 * (Math.PI / 180))) * 70, this.y - Math.cos(this.r + (180 * (Math.PI / 180))) * 70, 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, this.x + Math.sin(this.rotation) * 70, this.y - Math.cos(this.rotation) * 70, 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation + (180 * (Math.PI / 180))) * 40, this.y - Math.cos(this.rotation + (180 * (Math.PI / 180))) * 40, this.x + Math.sin(this.rotation + (180 * (Math.PI / 180))) * 70, this.y - Math.cos(this.rotation + (180 * (Math.PI / 180))) * 70, 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                     this.reloading = true;
                     break;
 
                     case 4:
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 40, this.y - Math.cos(this.r) * 40, (this.x + Math.sin(this.r) * 50) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 50) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 40, this.y - Math.cos(this.rotation) * 40, (this.x + Math.sin(this.rotation) * 50) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 50) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                     this.reloading = true;
 
-                    this.dx = Math.sin(this.r);
-                    this.dy = -Math.cos(this.r);
+                    this.dx = Math.sin(this.rotation);
+                    this.dy = -Math.cos(this.rotation);
                     this.mag = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
 
                     this.velx -= ((this.dx / this.mag) * (this.knockback / 2));
@@ -1644,35 +1084,35 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
                     break;
 
                     case 6:
-                    if(this.dr < 8) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 1.57) * 30, this.y - Math.cos(this.r - 1.57) * 30, mousex, mousey, 10, 1, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 1.57) * 30, this.y - Math.cos(this.r + 1.57) * 30, mousex, mousey, 10, 1, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        this.dr += 2;
+                    if(this.rotatingBarrel < 8) {
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 1.57) * 30, this.y - Math.cos(this.rotation - 1.57) * 30, mousex, mousey, 10, 1, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 1.57) * 30, this.y - Math.cos(this.rotation + 1.57) * 30, mousex, mousey, 10, 1, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        this.rotatingBarrel += 2;
                         this.reloading = true;
                     }
-                    if(this.dr > 8) {
+                    if(this.rotatingBarrel > 8) {
 
-                        this.dr -= this.dr - 7;
+                        this.rotatingBarrel -= this.rotatingBarrel - 7;
                         bullets.length = 8;
 
                     }
                     break;
 
                     case 7:
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, this.x + Math.sin(this.r) * 70, this.y - Math.cos(this.r) * 70, 12, 0, this.t, this.bulletS * 0.9, this.bulletD, this.bulletP, this.knockback, this));
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, this.x + Math.sin(this.r) * 70, this.y - Math.cos(this.r) * 70, 8, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, this.x + Math.sin(this.rotation) * 70, this.y - Math.cos(this.rotation) * 70, 12, 0, this.team, this.bulletS * 0.9, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, this.x + Math.sin(this.rotation) * 70, this.y - Math.cos(this.rotation) * 70, 8, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                     this.reloading = true;
                     break;
 
 
                     case 8:
                     if(!this.bullet) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.29) * 50, this.y - Math.cos(this.r + 0.29) * 50, (this.x + Math.sin(this.r + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 3.4316) * 50, this.y - Math.cos(this.r + 3.4316) * 50, (this.x + Math.sin(this.r + 3.3466) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 3.3466) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.29) * 50, this.y - Math.cos(this.rotation + 0.29) * 50, (this.x + Math.sin(this.rotation + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 3.4316) * 50, this.y - Math.cos(this.rotation + 3.4316) * 50, (this.x + Math.sin(this.rotation + 3.3466) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 3.3466) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.bullet = 1;
                     } else {
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 3.4316) * 50, this.y - Math.cos(this.r - 3.4316) * 50, (this.x + Math.sin(this.r - 3.3466) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 3.3466) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.29) * 50, this.y - Math.cos(this.r - 0.29) * 50, (this.x + Math.sin(this.r - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 3.4316) * 50, this.y - Math.cos(this.rotation - 3.4316) * 50, (this.x + Math.sin(this.rotation - 3.3466) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 3.3466) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.29) * 50, this.y - Math.cos(this.rotation - 0.29) * 50, (this.x + Math.sin(this.rotation - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.bullet = 0;
                     }
                     this.reloading = true;
@@ -1683,14 +1123,14 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
 
                         case 0:
 
-                        bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.reloading = true;
                         this.bullet = 1;
                         break;
 
                         case 1:
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.78534) * 50, this.y - Math.cos(this.r + 0.78534) * 50, (this.x + Math.sin(this.r + 0.78534) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.78534) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.78534) * 50, this.y - Math.cos(this.r - 0.78534) * 50, (this.x + Math.sin(this.r - 0.78534) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.78534) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.78534) * 50, this.y - Math.cos(this.rotation + 0.78534) * 50, (this.x + Math.sin(this.rotation + 0.78534) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.78534) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.78534) * 50, this.y - Math.cos(this.rotation - 0.78534) * 50, (this.x + Math.sin(this.rotation - 0.78534) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.78534) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.reloading = true;
                         this.bullet = 0;
                         break;
@@ -1700,15 +1140,15 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
                     case 10:
                     switch(this.bullet) {
                         case 0:
-                        bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 3.1416) * 50, this.y - Math.cos(this.r + 3.1416) * 50, (this.x + Math.sin(this.r + 3.1416) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 3.1416) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 3.1416) * 50, this.y - Math.cos(this.rotation + 3.1416) * 50, (this.x + Math.sin(this.rotation + 3.1416) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 3.1416) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.reloading = true;
                         this.bullet = 1;
                         break;
 
                         case 1:
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 1.57) * 50, this.y - Math.cos(this.r + 1.57) * 50, (this.x + Math.sin(this.r + 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 1.57) * 50, this.y - Math.cos(this.r - 1.57) * 50, (this.x + Math.sin(this.r - 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 1.57) * 50, this.y - Math.cos(this.rotation + 1.57) * 50, (this.x + Math.sin(this.rotation + 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 1.57) * 50, this.y - Math.cos(this.rotation - 1.57) * 50, (this.x + Math.sin(this.rotation - 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.reloading = true;
                         this.bullet = 0;
                         break;
@@ -1717,17 +1157,17 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
 
                     case 11:
                     if(!this.bullet) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.bullet = 1;
                     } else {
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.29) * 50, this.y - Math.cos(this.r - 0.29) * 50, (this.x + Math.sin(this.r - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.29) * 50, this.y - Math.cos(this.r + 0.29) * 50, (this.x + Math.sin(this.r + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.29) * 50, this.y - Math.cos(this.rotation - 0.29) * 50, (this.x + Math.sin(this.rotation - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.29) * 50, this.y - Math.cos(this.rotation + 0.29) * 50, (this.x + Math.sin(this.rotation + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.bullet = 0;
                     }
                     this.reloading = true;
 
-                    this.dx = Math.sin(this.r);
-                    this.dy = -Math.cos(this.r);
+                    this.dx = Math.sin(this.rotation);
+                    this.dy = -Math.cos(this.rotation);
                     this.mag = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
 
                     this.velx -= ((this.dx / this.mag) * (this.knockback / 2));
@@ -1739,19 +1179,19 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
                     switch(this.bullet) {
 
                         case 0:
-                        bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 3.1416) * 50, this.y - Math.cos(this.r + 3.1416) * 50, (this.x + Math.sin(this.r + 3.1416) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 3.1416) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 1.57) * 50, this.y - Math.cos(this.r + 1.57) * 50, (this.x + Math.sin(this.r + 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 1.57) * 50, this.y - Math.cos(this.r - 1.57) * 50, (this.x + Math.sin(this.r - 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 3.1416) * 50, this.y - Math.cos(this.rotation + 3.1416) * 50, (this.x + Math.sin(this.rotation + 3.1416) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 3.1416) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 1.57) * 50, this.y - Math.cos(this.rotation + 1.57) * 50, (this.x + Math.sin(this.rotation + 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 1.57) * 50, this.y - Math.cos(this.rotation - 1.57) * 50, (this.x + Math.sin(this.rotation - 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 1.57) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.reloading = true;
                         this.bullet = 1;
                         break;
 
                         case 1:
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.7854) * 50, this.y - Math.cos(this.r + 0.7854) * 50, (this.x + Math.sin(this.r + 0.7854) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.7854) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.7854) * 50, this.y - Math.cos(this.r - 0.7854) * 50, (this.x + Math.sin(this.r - 0.7854) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.7854) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 2.3562) * 50, this.y - Math.cos(this.r + 2.3562) * 50, (this.x + Math.sin(this.r + 2.3562) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 2.3562) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 2.3562) * 50, this.y - Math.cos(this.r - 2.3562) * 50, (this.x + Math.sin(this.r - 2.3562) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 2.3562) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.7854) * 50, this.y - Math.cos(this.rotation + 0.7854) * 50, (this.x + Math.sin(this.rotation + 0.7854) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.7854) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.7854) * 50, this.y - Math.cos(this.rotation - 0.7854) * 50, (this.x + Math.sin(this.rotation - 0.7854) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.7854) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 2.3562) * 50, this.y - Math.cos(this.rotation + 2.3562) * 50, (this.x + Math.sin(this.rotation + 2.3562) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 2.3562) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 2.3562) * 50, this.y - Math.cos(this.rotation - 2.3562) * 50, (this.x + Math.sin(this.rotation - 2.3562) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 2.3562) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.reloading = true;
                         this.bullet = 0;
                         break;
@@ -1760,31 +1200,31 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
 
                     case 15:
                     if(!this.bullet) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.29) * 50, this.y - Math.cos(this.r + 0.29) * 50, (this.x + Math.sin(this.r + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 2.385) * 50, this.y - Math.cos(this.r + 2.385) * 50, (this.x + Math.sin(this.r + 2.3) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 2.3) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 1.805) * 50, this.y - Math.cos(this.r - 1.805) * 50, (this.x + Math.sin(this.r - 1.88) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 1.88) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.29) * 50, this.y - Math.cos(this.rotation + 0.29) * 50, (this.x + Math.sin(this.rotation + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 2.385) * 50, this.y - Math.cos(this.rotation + 2.385) * 50, (this.x + Math.sin(this.rotation + 2.3) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 2.3) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 1.805) * 50, this.y - Math.cos(this.rotation - 1.805) * 50, (this.x + Math.sin(this.rotation - 1.88) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 1.88) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.bullet = 1;
                     } else {
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.29) * 50, this.y - Math.cos(this.r - 0.29) * 50, (this.x + Math.sin(this.r - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 1.805) * 50, this.y - Math.cos(this.r + 1.805) * 50, (this.x + Math.sin(this.r + 1.88) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 1.88) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 2.385) * 50, this.y - Math.cos(this.r - 2.385) * 50, (this.x + Math.sin(this.r - 2.3) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 2.3) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.29) * 50, this.y - Math.cos(this.rotation - 0.29) * 50, (this.x + Math.sin(this.rotation - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.205) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 1.805) * 50, this.y - Math.cos(this.rotation + 1.805) * 50, (this.x + Math.sin(this.rotation + 1.88) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 1.88) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 2.385) * 50, this.y - Math.cos(this.rotation - 2.385) * 50, (this.x + Math.sin(this.rotation - 2.3) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 2.3) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 10, 0, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                         this.bullet = 0;
                     }
                     this.reloading = true;
                     break;
 
                     case 16:
-                    if(this.dr < 8) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 1.57) * 30, this.y - Math.cos(this.r - 1.57) * 30, mousex, mousey, 10, 1, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 1.57) * 30, this.y - Math.cos(this.r + 1.57) * 30, mousex, mousey, 10, 1, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r) * 30, this.y - Math.cos(this.r - 1.57) * 30, mousex, mousey, 10, 1, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + Math.PI) * 30, this.y - Math.cos(this.r + Math.PI) * 30, mousex, mousey, 10, 1, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                        this.dr += 4;
+                    if(this.rotatingBarrel < 8) {
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 1.57) * 30, this.y - Math.cos(this.rotation - 1.57) * 30, mousex, mousey, 10, 1, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 1.57) * 30, this.y - Math.cos(this.rotation + 1.57) * 30, mousex, mousey, 10, 1, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation) * 30, this.y - Math.cos(this.rotation - 1.57) * 30, mousex, mousey, 10, 1, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + Math.PI) * 30, this.y - Math.cos(this.rotation + Math.PI) * 30, mousex, mousey, 10, 1, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                        this.rotatingBarrel += 4;
                         this.reloading = true;
                     }
-                    if(this.dr > 8) {
+                    if(this.rotatingBarrel > 8) {
 
-                        this.dr -= this.dr - 7;
+                        this.rotatingBarrel -= this.rotatingBarrel - 7;
                         bullets.length = 8;
 
                     }
@@ -1792,36 +1232,36 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
 
                     case 17:
 
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.8, 2, this.t, this.bulletS, this.bulletD * 1.5, this.bulletP * 1.5, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.8, 2, this.team, this.bulletS, this.bulletD * 1.5, this.bulletP * 1.5, this.knockback, this));
                     this.reloading = true;
                     break;
 
                     case 18:
 
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 30, this.y - Math.cos(this.r) * 30, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.5, 3, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 30, this.y - Math.cos(this.rotation) * 30, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.5, 3, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                     this.reloading = true;
                     break;
 
                     case 19:
 
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 1, 3, this.t, this.bulletS, this.bulletD * 2, this.bulletP * 2, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 1, 3, this.team, this.bulletS, this.bulletD * 2, this.bulletP * 2, this.knockback, this));
                     this.reloading = true;
                     break;
 
                     case 20:
 
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 30, this.y - Math.cos(this.r) * 30, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.5, 3, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                    bullets.push(new bullet(this.x + Math.sin(this.r + 2.0944) * 30, this.y - Math.cos(this.r + 2.0944) * 30, (this.x + Math.sin(this.r + 2.0944) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 2.0944) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.5, 3, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
-                    bullets.push(new bullet(this.x + Math.sin(this.r - 2.0944) * 30, this.y - Math.cos(this.r - 2.0944) * 30, (this.x + Math.sin(this.r - 2.0944) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 2.0944) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.5, 3, this.t, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 30, this.y - Math.cos(this.rotation) * 30, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.5, 3, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation + 2.0944) * 30, this.y - Math.cos(this.rotation + 2.0944) * 30, (this.x + Math.sin(this.rotation + 2.0944) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 2.0944) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.5, 3, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation - 2.0944) * 30, this.y - Math.cos(this.rotation - 2.0944) * 30, (this.x + Math.sin(this.rotation - 2.0944) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 2.0944) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 0.5, 3, this.team, this.bulletS, this.bulletD, this.bulletP, this.knockback, this));
                     this.reloading = true;
                     break;
 
                     case 21:
 
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 30, this.y - Math.cos(this.r) * 30, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 20, 0, this.t, this.bulletS, this.bulletD * 1.1, this.bulletP * 1.1, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 30, this.y - Math.cos(this.rotation) * 30, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 20, 0, this.team, this.bulletS, this.bulletD * 1.1, this.bulletP * 1.1, this.knockback, this));
 
-                    this.dx = Math.sin(this.r);
-                    this.dy = Math.cos(this.r + 3.1416);
+                    this.dx = Math.sin(this.rotation);
+                    this.dy = Math.cos(this.rotation + 3.1416);
                     this.mag = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
 
                     this.velx -= ((this.dx / this.mag) * (this.knockback * 2.3));
@@ -1832,10 +1272,10 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
 
                     case 22:
 
-                    bullets.push(new bullet(this.x + Math.sin(this.r) * 30, this.y - Math.cos(this.r) * 30, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 25, 0, this.t, this.bulletS, this.bulletD * 1.3, this.bulletP * 1.3, this.knockback, this));
+                    bullets.push(new bullet(this.x + Math.sin(this.rotation) * 30, this.y - Math.cos(this.rotation) * 30, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 25, 0, this.team, this.bulletS, this.bulletD * 1.3, this.bulletP * 1.3, this.knockback, this));
 
-                    this.dx = Math.sin(this.r);
-                    this.dy = Math.cos(this.r + 3.1416);
+                    this.dx = Math.sin(this.rotation);
+                    this.dy = Math.cos(this.rotation + 3.1416);
                     this.mag = Math.sqrt(this.dx * this.dx + this.dy * this.dy);
 
                     this.velx -= ((this.dx / this.mag) * (this.knockback * 3));
@@ -1847,16 +1287,16 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
                     case 23:
 
                     if(this.bullet === 0) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.12) * 50, this.y - Math.cos(this.r - 0.12) * 50, (this.x + Math.sin(this.r - 0.09) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.09) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 5, 0, this.t, this.bulletS, this.bulletD * 0.7, this.bulletP * 0.7, this.knockback * 0.4, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.12) * 50, this.y - Math.cos(this.rotation - 0.12) * 50, (this.x + Math.sin(this.rotation - 0.09) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.09) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 5, 0, this.team, this.bulletS, this.bulletD * 0.7, this.bulletP * 0.7, this.knockback * 0.4, this));
                         this.bullet = 1;
                     }else if(this.bullet === 1) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.12) * 50, this.y - Math.cos(this.r + 0.12) * 50, (this.x + Math.sin(this.r + 0.09) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.09) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 5, 0, this.t, this.bulletS, this.bulletD * 0.7, this.bulletP * 0.7, this.knockback * 0.4, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.12) * 50, this.y - Math.cos(this.rotation + 0.12) * 50, (this.x + Math.sin(this.rotation + 0.09) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.09) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 5, 0, this.team, this.bulletS, this.bulletD * 0.7, this.bulletP * 0.7, this.knockback * 0.4, this));
                         this.bullet = 2;
                     }else if(this.bullet === 2) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.5) * 40, this.y - Math.cos(this.r - 0.5) * 40, (this.x + Math.sin(this.r - 0.28) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.28) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 5, 0, this.t, this.bulletS, this.bulletD * 0.7, this.bulletP * 0.7, this.knockback * 0.4, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.5) * 40, this.y - Math.cos(this.rotation - 0.5) * 40, (this.x + Math.sin(this.rotation - 0.28) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.28) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 5, 0, this.team, this.bulletS, this.bulletD * 0.7, this.bulletP * 0.7, this.knockback * 0.4, this));
                         this.bullet = 3;
                     }else if(this.bullet === 3) {
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.5) * 40, this.y - Math.cos(this.r + 0.5) * 40, (this.x + Math.sin(this.r + 0.28) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.28) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 5, 0, this.t, this.bulletS, this.bulletD * 0.7, this.bulletP * 0.7, this.knockback * 0.4, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.5) * 40, this.y - Math.cos(this.rotation + 0.5) * 40, (this.x + Math.sin(this.rotation + 0.28) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.28) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 5, 0, this.team, this.bulletS, this.bulletD * 0.7, this.bulletP * 0.7, this.knockback * 0.4, this));
                         this.bullet = 0;
                     }
                     this.reloading = true;
@@ -1865,17 +1305,17 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
                     case 13:
                     switch(this.barrel) {
                         case 0:
-                        bullets.push(new bullet(this.x + Math.sin(this.r) * 50, this.y - Math.cos(this.r) * 50, (this.x + Math.sin(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.t, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation) * 50, this.y - Math.cos(this.rotation) * 50, (this.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.team, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
                         this.barrel = 1;
                         break;
                         case 1:
-                        bullets.push(new bullet(this.x + Math.sin(this.r - 0.1) * 50, this.y - Math.cos(this.r - 0.1) * 50, (this.x + Math.sin(this.r - 0.1) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.1) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.t, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.1) * 50, this.y - Math.cos(this.r + 0.1) * 50, (this.x + Math.sin(this.r + 0.1) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.1) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.t, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation - 0.1) * 50, this.y - Math.cos(this.rotation - 0.1) * 50, (this.x + Math.sin(this.rotation - 0.1) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.1) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.team, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.1) * 50, this.y - Math.cos(this.rotation + 0.1) * 50, (this.x + Math.sin(this.rotation + 0.1) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.1) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.team, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
                         this.barrel = 2;
                         break;
                         case 2:
-                        bullets .push(new bullet(this.x + Math.sin(this.r - 0.25) * 50, this.y - Math.cos(this.r - 0.25) * 50, (this.x + Math.sin(this.r - 0.18) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r - 0.18) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.t, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
-                        bullets.push(new bullet(this.x + Math.sin(this.r + 0.25) * 50, this.y - Math.cos(this.r + 0.25) * 50, (this.x + Math.sin(this.r + 0.18) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.r + 0.18) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.t, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
+                        bullets .push(new bullet(this.x + Math.sin(this.rotation - 0.25) * 50, this.y - Math.cos(this.rotation - 0.25) * 50, (this.x + Math.sin(this.rotation - 0.18) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation - 0.18) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.team, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
+                        bullets.push(new bullet(this.x + Math.sin(this.rotation + 0.25) * 50, this.y - Math.cos(this.rotation + 0.25) * 50, (this.x + Math.sin(this.rotation + 0.18) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), (this.y - Math.cos(this.rotation + 0.18) * 70) - ((Math.random() * this.spread) - (this.spread / 2)), 2, 0, this.team, this.bulletS, (this.bulletD + this.bulletP) * 0.4, 0.7, this.knockback, this));
                         this.barrel = 0;
                         break;
                     }
@@ -1925,10 +1365,10 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
     this.show = function() {
         c.save();
         c.translate(this.x, this.y);
-        c.scale(this.ss, this.ss);
-        c.globalAlpha = this.a;
+        c.scale(this.deathSize, this.deathSize);
+        c.globalAlpha = this.alpha;
 
-        if(this.H !== this.h) {
+        if(this.Health !== this.health) {
 
             c.strokeStyle = "rgb(100, 100, 100, 0.8)";
             c.lineWidth = 7;
@@ -1941,19 +1381,19 @@ function tank(x, y, r, t, n, xp, lvl, id, userID) {
             c.lineWidth = 4;
             c.beginPath();
             c.moveTo(-25, 35);
-            c.lineTo(((25 / this.H) * (this.h * 2)) - 25, 35);
+            c.lineTo(((25 / this.Health) * (this.health * 2)) - 25, 35);
             c.stroke();
 
         }
 
         c.lineWidth = 3;
 
-        c.rotate(this.r);
+        c.rotate(this.rotation);
 
         c.fillStyle = "rgb(200, 200, 200)";
         c.strokeStyle = "rgb(150, 150, 150)";
         tankshow[this.id]();
-        switch(this.t) {
+        switch(this.team) {
             case 0:
             c.fillStyle = "rgb(100, 200, 250)";
             c.strokeStyle = "rgb(50, 150, 200)";

@@ -86,7 +86,11 @@ function bringBackMenu() {
         input.style.border = "5px solid black";
         input.style.left = ((canvas.width / 2) - (input.size * 5)) + "px";
         input.style.top = ((canvas.height / 3) - (50 * (op / 13))) + "px";
-        input.focus();
+
+        if(1 - (op / 10) > 1) {
+            tanks = [];
+            input.focus();
+        }
 }
 
 function returnMenu() {
@@ -176,25 +180,15 @@ function draw() {
 
         if(s == "FFA") {
             for(var i = 0; i < canvas.width / 10; i++) {
-                c.beginPath();
-                c.moveTo(0, (i * 25) - tanks[0].y % 25);
-                c.lineTo(canvas.width, (i * 25) - tanks[0].y % 25);
-                c.stroke();
-                c.beginPath();
-                c.moveTo((i * 25) - tanks[0].x % 25, 0);
-                c.lineTo((i * 25) - tanks[0].x % 25, canvas.height);
-                c.stroke();
+                line(0, (i * 25) - tanks[0].y % 25, canvas.width, (i * 25) - tanks[0].y % 25);
+                line((i * 25) - tanks[0].x % 25, 0, (i * 25) - tanks[0].x % 25, canvas.height);
             }
         } else {
-            for(var i = 0; i < canvas.width / 10; i++) {
-                c.beginPath();
-                c.moveTo(0, (i * 25) - killedScreen.y % 25);
-                c.lineTo(canvas.width, (i * 25) - killedScreen.y % 25);
-                c.stroke();
-                c.beginPath();
-                c.moveTo((i * 25) - killedScreen.x % 25, 0);
-                c.lineTo((i * 25) - killedScreen.x % 25, canvas.height);
-                c.stroke();
+            if(killedScreen !== null) {
+                for(var i = 0; i < canvas.width / 10; i++) {
+                    line(0, (i * 25) - killedScreen.y % 25, canvas.width, (i * 25) - killedScreen.y % 25);
+                    line((i * 25) - killedScreen.x % 25, 0, (i * 25) - killedScreen.x % 25, canvas.height);
+                }
             }
         }
         c.translate(camx, camy);
@@ -247,7 +241,7 @@ function draw() {
 
                     shapes[i].gothit(tanks[j]);
                     tanks[j].gotHit(shapes[i]);
-                    tanks[j].h--;
+                    tanks[j].health--;
 
                 }
             }
@@ -326,14 +320,6 @@ function draw() {
 
         for(var i = tanks.length - 1; i >= 0; i--) {
             tanks[i].show();
-            if(i !== 0) {
-                c.fillStyle = "white";
-                c.strokeStyle = "black";
-                c.lineWidth = "1";
-                c.font = "bold 15px Ubuntu";
-                c.fillText(tanks[i].n, tanks[i].x, tanks[i].y - 50);
-                c.strokeText(tanks[i].n, tanks[i].x, tanks[i].y - 50);
-            }
         }
         if(tanks[0]) {
             tanks[0].update(Math.atan2(-(tanks[0].x - (mousex - camx)), (tanks[0].y - (mousey - camy))));
@@ -345,20 +331,14 @@ function draw() {
 
             c.lineWidth = 20;
             c.strokeStyle = "rgba(50, 50, 50, 0.8)";
-            c.beginPath();
-            c.lineTo((canvas.width / 2) - 250, canvas.height - 25);
-            c.lineTo((canvas.width / 2) + 250, canvas.height - 25);
-            c.stroke();
+            line((canvas.width / 2) - 250, canvas.height - 25, (canvas.width / 2) + 250, canvas.height - 25);
 
             tanks[0].xp += tanks[0].showxp / 5;
             tanks[0].showxp /= 5;
 
             c.lineWidth = 14;
             c.strokeStyle = "rgb(250, 250, 150)";
-            c.beginPath();
-            c.lineTo((canvas.width / 2) - 250, canvas.height - 25);
-            c.lineTo(((canvas.width / 2) - 250) + (tanks[0].xp * (((canvas.width / 2) + 250) / (xpamt[tanks[0].lvl] * 1.199))), canvas.height - 25);
-            c.stroke();
+            line((canvas.width / 2) - 250, canvas.height - 25, ((canvas.width / 2) - 250) + (tanks[0].xp * (((canvas.width / 2) + 250) / (xpamt[tanks[0].lvl] * 1.199))), canvas.height - 25);
 
             c.fillStyle = "white";
             c.strokeStyle = "black";
@@ -368,8 +348,8 @@ function draw() {
             c.lineWidth = 1;
             c.fillText("Level " + tanks[0].lvl + " " + classes[tanks[0].id], canvas.width / 2, canvas.height - 25);
             c.font = "bold 25px Ubuntu";
-            c.fillText(tanks[0].n, canvas.width / 2, canvas.height - 50);
-            c.strokeText(tanks[0].n, canvas.width / 2, canvas.height - 50);
+            c.fillText(tanks[0].name, canvas.width / 2, canvas.height - 50);
+            c.strokeText(tanks[0].name, canvas.width / 2, canvas.height - 50);
 
             upgradeScreen();
 
@@ -379,10 +359,7 @@ function draw() {
 
                 c.strokeStyle = "rgb(50, 50, 50, 0.8)";
                 c.lineWidth = 16;
-                c.beginPath();
-                c.moveTo(20, canvas.height - (20 + (i * 23)));
-                c.lineTo(200, canvas.height - (20 + (i * 23)));
-                c.stroke();
+                line(20, canvas.height - (20 + (i * 23)), 200, canvas.height - (20 + (i * 23)));
 
                 if(mmousex > 175 && mmousex < 210 && mmousey > canvas.height - (30 + (i * 23)) && mmousey < canvas.height - (10 + (i * 23))) {
 
@@ -651,11 +628,10 @@ function draw() {
             c.restore();
 
         }
-
-            if(tanks[0].dead) {
-                returnMenu();
-            }
-        } else {
+        if(tanks[0].dead) {
+            returnMenu();
+        }
+    } else {
 
             c.lineWidth = 3;
 
@@ -668,29 +644,29 @@ function draw() {
                 c.font = "bold 40px Ubuntu";
                 c.fillText("You were killed by " + killedScreen.n, canvas.width / 2, 100);
                 c.font = "bold 30px Ubuntu";
-                c.fillText("Level " + killedScreen.lvl, 200, 350);
-                c.fillText(classes[killedScreen.id], 200, 380);
+                c.fillText("Level " + killedScreen.lvl, (canvas.width / 2) - 250, 350);
+                c.fillText(classes[killedScreen.id], (canvas.width / 2) - 250, 380);
                 c.font = "bold 20px Ubuntu";
-                c.fillText("Health left: " + killedScreen.H, 380, 250);
+                c.fillText("Health left: " + killedScreen.Health, (canvas.width / 2) - 80, 250);
 
-                line(500, 170, 500, 330);
+                line(canvas.width / 2, 170, canvas.width / 2, 330);
 
                 c.textAlign = "left";
                 c.font = "bold 15px Ubuntu";
-                c.fillText("Max Health: " + killedScreen.healthpoints, 520, 180);
-                c.fillText("Health Regen: " + killedScreen.regenpoints, 520, 200);
-                c.fillText("Body Damage: " + killedScreen.bodydamagepoints, 520, 220);
-                c.fillText("Bullet Speed: " + killedScreen.bulletSpoints, 520, 240);
-                c.fillText("Bullet Damage: " + killedScreen.bulletDpoints, 520, 260);
-                c.fillText("Bullet Penetration: " + killedScreen.bulletPpoints, 520, 280);
-                c.fillText("Reload: " + killedScreen.reloadpoints, 520, 300);
-                c.fillText("Movement Speed: " + killedScreen.movementspeedpoints, 520, 320);
+                c.fillText("Max Health: " + killedScreen.healthpoints, (canvas.width / 2) + 20, 180);
+                c.fillText("Health Regen: " + killedScreen.regenpoints, (canvas.width / 2) + 20, 200);
+                c.fillText("Body Damage: " + killedScreen.bodydamagepoints, (canvas.width / 2) + 20, 220);
+                c.fillText("Bullet Speed: " + killedScreen.bulletSpoints, (canvas.width / 2) + 20, 240);
+                c.fillText("Bullet Damage: " + killedScreen.bulletDpoints, (canvas.width / 2) + 20, 260);
+                c.fillText("Bullet Penetration: " + killedScreen.bulletPpoints, (canvas.width / 2) + 20, 280);
+                c.fillText("Reload: " + killedScreen.reloadpoints, (canvas.width / 2) + 20, 300);
+                c.fillText("Movement Speed: " + killedScreen.movementspeedpoints, (canvas.width / 2) + 20, 320);
 
 
                 c.textAlign = "center";
 
                 c.save();
-                c.translate(200, 250);
+                c.translate((canvas.width / 2) - 200, 250);
                 c.scale(1.2, 1.2);
                 c.rotate(frame / 100);
 
@@ -725,7 +701,7 @@ function draw() {
     }else if(transitioningToMenu && menuVel > 0 && !transitioningToGame) {
         bringBackMenu();
     } else if(transitioningToMenu && menuVel <= 0 && !transitioningToGame) {
-        transitioningToMenu == false;
+        transitioningToMenu = false;
         s == "Menu";
     }
 
@@ -865,7 +841,6 @@ function line(x1, y1, x2, y2) {
     c.lineTo(x2, y2);
     c.stroke();
 };
-
 function circle(x, y, r) {
     c.beginPath();
     c.arc(x, y, r, 0, 2 * Math.PI);

@@ -98,10 +98,7 @@ function upgradeScreen() {
 
             c.fillStyle = "rgb(100, 200, 250)";
             c.strokeStyle = "rgb(50, 150, 200)";
-            c.beginPath();
-            c.arc(0, 0, 25, 0, 2 * Math.PI);
-            c.fill();
-            c.stroke();
+            circle(0, 0, 25);
             c.resetTransform();
 
             c.fillStyle = "rgb(200, 200, 200)";
@@ -120,10 +117,7 @@ function upgradeScreen() {
 
             c.fillStyle = "rgb(100, 200, 250)";
             c.strokeStyle = "rgb(50, 150, 200)";
-            c.beginPath();
-            c.arc(0, 0, 25, 0, 2 * Math.PI);
-            c.fill();
-            c.stroke();
+            circle(0, 0, 25);
             c.resetTransform();
 
             c.fillStyle = "rgb(200, 200, 200)";
@@ -140,10 +134,7 @@ function upgradeScreen() {
 
             c.fillStyle = "rgb(100, 200, 250)";
             c.strokeStyle = "rgb(50, 150, 200)";
-            c.beginPath();
-            c.arc(0, 0, 25, 0, 2 * Math.PI);
-            c.fill();
-            c.stroke();
+            circle(0, 0, 25);
             c.resetTransform();
 
             c.fillStyle = "rgb(200, 200, 200)";
@@ -160,10 +151,7 @@ function upgradeScreen() {
 
             c.fillStyle = "rgb(100, 200, 250)";
             c.strokeStyle = "rgb(50, 150, 200)";
-            c.beginPath();
-            c.arc(0, 0, 25, 0, 2 * Math.PI);
-            c.fill();
-            c.stroke();
+            circle(0, 0, 25);
             c.resetTransform();
 
             c.fillStyle = "rgb(200, 200, 200)";
