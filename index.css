@@ -15,7 +15,7 @@ html, head, body {
 
 .navBarItem {
     text-align: center;
-    display: inlie-block;
+    display: inline-block;
     width: 15%;
     height: 100%;
     padding-top: 2%;
@@ -30,38 +30,4 @@ html, head, body {
 a {
     text-decoration: inherit;
     color: inherit;
-}
-
-#title {
-    text-align: center;
-    font-size: 60px;
-    color: rgb(120, 100, 80);
-}
-
-#screenshot-0-0-2 {
-    width: 50%;
-    height: 50%;
-}
-
-.release-subtext {
-    font-size: 20px;
-}
-
-.release-section {
-    text-align: center;
-    font-family: "Verdana";
-    color: white;
-}
-
-.release-title {
-    font-size: 40px;
-}
-
-.download {
-    color: rgb(255, 150, 150);
-}
-
-.list {
-    font-size: 16px;
-    color: rgb(200, 200, 200);
 }
