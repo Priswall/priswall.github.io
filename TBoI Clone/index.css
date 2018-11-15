@@ -15,7 +15,7 @@ html, head, body {
 
 .navBarItem {
     text-align: center;
-    display: inlie-block;
+    display: inline-block;
     width: 15%;
     height: 100%;
     padding-top: 2%;
@@ -38,7 +38,7 @@ a {
     color: rgb(120, 100, 80);
 }
 
-#screenshot-0-0-2 {
+.screenshot {
     width: 50%;
     height: 50%;
 }
@@ -53,8 +53,22 @@ a {
     color: white;
 }
 
+.version-subtext {
+    font-size: 20px;
+}
+
+.version-section {
+    text-align: center;
+    font-family: "Verdana";
+    color: rgb(140, 120, 100);
+}
+
 .release-title {
     font-size: 40px;
+}
+
+.version-title {
+    font-size: 30px;
 }
 
 .download {
