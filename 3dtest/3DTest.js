@@ -72,22 +72,22 @@ function cube(x, y, z, w, h, l) {
         for(var i = 0; i < this.points.length; i++) {
 
             c.fillStyle = "rgb(255, 255, 255)";
-            c.fillText(Math.round(this.points[i].z), this.points[i].x, this.points[i].y);
+            c.fillText(i, this.points[i].x, this.points[i].y);
 
         }
 
-        for(var i = 0; i < this.faces.length; i++) {
+//         for(var i = 0; i < this.faces.length; i++) {
 
-            c.fillStyle = "rgb(" + i * 40 + ", 50, 50)";
+//             c.fillStyle = "rgb(" + i * 40 + ", 50, 50)";
 
-            c.beginPath();
-            c.moveTo(this.points[this.faces[i][0]].x, this.points[this.faces[i][0]].y);
-            c.lineTo(this.points[this.faces[i][1]].x, this.points[this.faces[i][1]].y);
-            c.lineTo(this.points[this.faces[i][2]].x, this.points[this.faces[i][2]].y);
-            c.lineTo(this.points[this.faces[i][3]].x, this.points[this.faces[i][3]].y);
-            c.fill();
+//             c.beginPath();
+//             c.moveTo(this.points[this.faces[i][0]].x, this.points[this.faces[i][0]].y);
+//             c.lineTo(this.points[this.faces[i][1]].x, this.points[this.faces[i][1]].y);
+//             c.lineTo(this.points[this.faces[i][2]].x, this.points[this.faces[i][2]].y);
+//             c.lineTo(this.points[this.faces[i][3]].x, this.points[this.faces[i][3]].y);
+//             c.fill();
 
-        }
+//         }
 
     }
 }
