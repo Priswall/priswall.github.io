@@ -136,8 +136,8 @@ function point3d(x, y, z) {
 };
 
 cubes.push(new cube(0, 0, 0, 50, 50, 50));
-cubes.push(new cube(0, 50, 0, 50, 50, 50));
-cubes.push(new cube(0, 0, 50, 50, 50, 50));
+// cubes.push(new cube(0, 50, 0, 50, 50, 50));
+// cubes.push(new cube(0, 0, 50, 50, 50, 50));
 
 function draw() {
 
